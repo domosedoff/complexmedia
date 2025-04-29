@@ -6,8 +6,8 @@ import Image from "next/image"; // Теперь Image используется
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   // TODO: Замените на ваши реальные контакты и ссылки
-  const email = "info@komplex-media.example.com";
-  const telegramUsername = "komplex_media_support"; // Пример
+  const email = "info@complexmedia.ru";
+  const telegramUsername = "complexmedia_bot"; // Пример
   const telegramLink = `https://t.me/${telegramUsername}`;
   // TODO: Замените '/logo-placeholder.svg' на реальный путь к вашему логотипу в /public
   const logoPath = "/logo.png"; // ВРЕМЕННО: Используйте плейсхолдер или ваш файл
