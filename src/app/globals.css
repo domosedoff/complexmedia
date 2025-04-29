@@ -1,26 +1,40 @@
+/* src/app/globals.css */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Наши основные цвета */
+  --color-primary-dark: #111111;
+  --color-secondary-dark: #181818;
+  --color-accent-red: #f83030;
+  --color-accent-red-hover: #d02020;
+  --color-text-light: #eaeaea;
+  --color-text-muted: #a0a0a0;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Шрифт (переменная --font-inter будет из layout.tsx) */
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Путь к вашему фоновому изображению в папке /public */
+  /* !!! ЗАМЕНИТЕ 'komplex-bg.jpg' НА ИМЯ ВАШЕГО ФАЙЛА !!! */
+  --image-global-bg: url("/hero-background.jpg");
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Используем var() для доступа к CSS переменным */
+  background-image: var(--image-global-bg); /* Прямой доступ к переменной */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  /* Базовый цвет фона на случай, если картинка не загрузится */
+  background-color: var(--color-primary-dark); /* Прямой доступ к переменной */
+
+  /* Базовый цвет текста и шрифт */
+  color: var(--color-text-light); /* Прямой доступ к переменной */
+  font-family: var(--font-sans); /* Прямой доступ к переменной */
+
+  /* Важно: Убедитесь, что контент не "прилипает" к краям */
+  /* Это обычно делается через padding/margin в layout или на страницах */
 }
+
+/* Дополнительные глобальные стили */
