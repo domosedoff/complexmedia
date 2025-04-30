@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 
 const Header = () => {
-  const logoPath = "/logo.png"; // ЗАМЕНИТЕ
+  const logoPath = "/logo_01.png"; // ЗАМЕНИТЕ
   const telegramBotLink = "https://t.me/complexmedia_bot"; // ЗАМЕНИТЕ
   const logoWidth = 150;
   const logoHeight = 40;

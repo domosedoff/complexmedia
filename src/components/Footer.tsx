@@ -10,7 +10,7 @@ const Footer = () => {
   const telegramUsername = "complexmedia_bot"; // Пример
   const telegramLink = `https://t.me/${telegramUsername}`;
   // TODO: Замените '/logo-placeholder.svg' на реальный путь к вашему логотипу в /public
-  const logoPath = "/logo.png"; // ВРЕМЕННО: Используйте плейсхолдер или ваш файл
+  const logoPath = "/logo_01.png"; // ВРЕМЕННО: Используйте плейсхолдер или ваш файл
 
   return (
     // Используем CSS переменные через theme() для Tailwind v4
