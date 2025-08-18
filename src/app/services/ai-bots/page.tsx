@@ -1,18 +1,10 @@
 // src/app/services/ai-bots/page.tsx
 "use client"; // Обязательно
 
-import React from "react";
+import React, { Suspense } from "react";
 import PageWrapper from "@/components/PageWrapper";
 import { CheckCircle } from "lucide-react";
 import { ServiceNavigation } from "@/components/ServiceNavigation"; // Импортируем
-
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Разработка ИИ Telegram ботов | Комплекс Медиа",
-  description:
-    "Создание и разработка умных Telegram ботов на искусственном интеллекте (AI) для автоматизации поддержки, продаж и сбора лидов. Заказать AI чат-бота для бизнеса.",
-};
 
 export default function AiBotsPage() {
   const telegramBotLink = "#"; // ЗАМЕНИТЕ
@@ -35,82 +27,94 @@ export default function AiBotsPage() {
   ];
 
   return (
-    <PageWrapper
-      title="Разработка AI Telegram Ботов"
-      showCta={true}
-      telegramBotLink={telegramBotLink}
-    >
-      {/* --- Навигация по услугам --- */}
-      <ServiceNavigation />
-      {/* --- Конец навигации --- */}
+    <>
+      <head>
+        <title>Разработка сайтов на Next.js | Комплекс Медиа</title>
+        <meta
+          name="description"
+          content="Заказать разработку современных, быстрых и адаптивных сайтов под ключ. Создаем лендинги, корпоративные сайты и веб-приложения на Next.js для вашего бизнеса."
+        />
+        {/* Можно добавить и OG-теги для этой конкретной страницы, если хотите */}
+      </head>
+      <PageWrapper
+        title="Разработка AI Telegram Ботов"
+        showCta={true}
+        telegramBotLink={telegramBotLink}
+      >
+        <Suspense fallback={<div>Загрузка навигации...</div>}>
+          {" "}
+          {/* fallback - то, что показывается во время загрузки */}
+          <ServiceNavigation />
+        </Suspense>
 
-      {/* Обертка с фоном */}
-      <div className="bg-secondary-dark/60 backdrop-blur-sm p-6 md:p-8 rounded-lg border border-white/10 shadow-lg">
-        {/* Внутренний div с prose */}
-        <div className="prose prose-invert lg:prose-lg max-w-none mx-auto">
-          <p className="lead text-xl text-text-muted !mt-0">
-            Автоматизируйте коммуникацию с клиентами и повысьте эффективность
-            вашего бизнеса с помощью интеллектуальных Telegram ботов. Мы создаем
-            ботов, которые понимают естественный язык, обучаются и решают
-            реальные задачи.
-          </p>
+        {/* Обертка с фоном */}
+        <div className="bg-secondary-dark/60 backdrop-blur-sm p-6 md:p-8 rounded-lg border border-white/10 shadow-lg">
+          {/* Внутренний div с prose */}
+          <div className="prose prose-invert lg:prose-lg max-w-none mx-auto">
+            <p className="lead text-xl text-text-muted !mt-0">
+              Автоматизируйте коммуникацию с клиентами и повысьте эффективность
+              вашего бизнеса с помощью интеллектуальных Telegram ботов. Мы
+              создаем ботов, которые понимают естественный язык, обучаются и
+              решают реальные задачи.
+            </p>
 
-          <h2>Ключевые возможности ботов</h2>
-          <ul className="list-none p-0 space-y-2">
-            {features.map((feature, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <CheckCircle
-                  size={20}
-                  className="text-[--color-accent-red] mt-1 flex-shrink-0"
-                />
-                <span>{feature}</span>
+            <h2>Ключевые возможности ботов</h2>
+            <ul className="list-none p-0 space-y-2">
+              {features.map((feature, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <CheckCircle
+                    size={20}
+                    className="text-[--color-accent-red] mt-1 flex-shrink-0"
+                  />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <h2>Почему AI-бот лучше обычного?</h2>
+            <p>
+              В отличие от простых ботов с кнопками, AI-боты способны понимать
+              запросы пользователей на естественном языке, поддерживать контекст
+              диалога, генерировать осмысленные ответы и даже выполнять сложные
+              действия на основе полученной информации. Это обеспечивает более
+              гибкое и человекоподобное взаимодействие.
+            </p>
+
+            <h2>Примеры использования</h2>
+            <ul>
+              <li>
+                Бот для поддержки клиентов (ответы на вопросы, решение проблем).
               </li>
+              <li>
+                Бот для продаж (консультация по товарам, помощь в оформлении
+                заказа).
+              </li>
+              <li>
+                Бот для HR (первичный скрининг кандидатов, ответы на вопросы
+                сотрудников).
+              </li>
+              <li>
+                Бот для образовательных проектов (проверка знаний,
+                предоставление материалов).
+              </li>
+              <li>Информационный бот с доступом к базе знаний.</li>
+            </ul>
+
+            <h2>Технологии</h2>
+          </div>
+          {/* Теги технологий */}
+          <div className="flex flex-wrap gap-2 mt-6">
+            {technologies.map((tech, index) => (
+              <span
+                key={index}
+                className="bg-primary-dark text-text-muted text-xs font-medium px-2.5 py-0.5 rounded border border-white/10"
+              >
+                {tech}
+              </span>
             ))}
-          </ul>
-
-          <h2>Почему AI-бот лучше обычного?</h2>
-          <p>
-            В отличие от простых ботов с кнопками, AI-боты способны понимать
-            запросы пользователей на естественном языке, поддерживать контекст
-            диалога, генерировать осмысленные ответы и даже выполнять сложные
-            действия на основе полученной информации. Это обеспечивает более
-            гибкое и человекоподобное взаимодействие.
-          </p>
-
-          <h2>Примеры использования</h2>
-          <ul>
-            <li>
-              Бот для поддержки клиентов (ответы на вопросы, решение проблем).
-            </li>
-            <li>
-              Бот для продаж (консультация по товарам, помощь в оформлении
-              заказа).
-            </li>
-            <li>
-              Бот для HR (первичный скрининг кандидатов, ответы на вопросы
-              сотрудников).
-            </li>
-            <li>
-              Бот для образовательных проектов (проверка знаний, предоставление
-              материалов).
-            </li>
-            <li>Информационный бот с доступом к базе знаний.</li>
-          </ul>
-
-          <h2>Технологии</h2>
+          </div>
         </div>
-        {/* Теги технологий */}
-        <div className="flex flex-wrap gap-2 mt-6">
-          {technologies.map((tech, index) => (
-            <span
-              key={index}
-              className="bg-primary-dark text-text-muted text-xs font-medium px-2.5 py-0.5 rounded border border-white/10"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-    </PageWrapper>
+      </PageWrapper>
+    </>
   );
 }
