@@ -9,7 +9,8 @@ import MobileMenu from "./MobileMenu";
 
 const Header = () => {
   const logoPath = "/logo_01.png"; // ЗАМЕНИТЕ
-  const telegramBotLink = "https://t.me/complexmedia_bot"; // ЗАМЕНИТЕ
+  const telegramBotLink = "https://t.me/complexmedia_bot";
+  const personalTelegramLink = "https://t.me/domosedoff";
   const logoWidth = 150;
   const logoHeight = 40;
 
@@ -66,12 +67,12 @@ const Header = () => {
           >
             О нас
           </Link>
-          <Link
+          {/* <Link
             href="/portfolio"
             className="text-[--color-text-muted] hover:text-[--color-text-light] transition-colors"
           >
             Портфолио
-          </Link>
+          </Link> */}
           <Link
             href="/contact"
             className="text-[--color-text-muted] hover:text-[--color-text-light] transition-colors"
@@ -80,16 +81,25 @@ const Header = () => {
           </Link>
         </nav>
 
-        {/* Кнопка CTA (Десктоп) */}
-        <Link
-          href={telegramBotLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:inline-block bg-[--color-accent-red] hover:bg-[--color-accent-red-hover] text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-300 whitespace-nowrap"
-        >
-          Начать проект (TG)
-        </Link>
+        <div className="hidden md:flex items-center gap-x-3">
+          <Link
+            href={telegramBotLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:inline-block bg-[--color-accent-red] hover:bg-[--color-accent-red-hover] text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-300 whitespace-nowrap"
+          >
+            Создать ТЗ на сайт
+          </Link>
 
+          <Link
+            href={personalTelegramLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:inline-block bg-[--color-accent-red] hover:bg-[--color-accent-red-hover] text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-300 whitespace-nowrap"
+          >
+            Обсудить автоматизацию ИИ
+          </Link>
+        </div>
         {/* Кнопка Бургер-меню (Мобильные) */}
         {/* Убедимся, что у кнопки есть position: relative, чтобы z-index сработал */}
         <div className="md:hidden ml-4 relative z-[51]">
@@ -110,6 +120,7 @@ const Header = () => {
         isOpen={isMobileMenuOpen}
         onClose={toggleMobileMenu}
         telegramBotLink={telegramBotLink}
+        personalTelegramLink={personalTelegramLink}
       />
     </header>
   );

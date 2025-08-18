@@ -7,19 +7,19 @@ interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   telegramBotLink: string;
+  personalTelegramLink: string; // Добавляем вторую ссылку
 }
 
-// --- ДОБАВЛЯЕМ ИНТЕРФЕЙС ДЛЯ ССЫЛКИ МЕНЮ ---
 interface MenuLinkItem {
   href: string;
   title: string;
 }
-// --- КОНЕЦ ДОБАВЛЕНИЯ ---
 
 const MobileMenu: React.FC<MobileMenuProps> = ({
   isOpen,
   onClose,
   telegramBotLink,
+  personalTelegramLink,
 }) => {
   const menuVariants = {
     hidden: {
@@ -43,15 +43,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     }),
   };
 
-  // --- УКАЗЫВАЕМ ТИП ДЛЯ МАССИВА menuLinks ---
+  // --- УБИРАЕМ ССЫЛКУ НА ПОРТФОЛИО ---
   const menuLinks: MenuLinkItem[] = [
     { href: "/", title: "Главная" },
     { href: "/#services", title: "Услуги" },
     { href: "/about", title: "О нас" },
-    { href: "/portfolio", title: "Портфолио" },
+    // { href: '/portfolio', title: 'Портфолио' },
     { href: "/contact", title: "Контакты" },
   ];
-  // --- КОНЕЦ ИЗМЕНЕНИЯ ---
 
   return (
     <AnimatePresence>
@@ -66,45 +65,50 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         >
           <div className="container mx-auto px-4 pt-24 pb-10 flex flex-col h-full">
             <nav className="flex flex-col items-center space-y-5 mb-10">
-              {menuLinks.map(
-                (
-                  link,
-                  index // Теперь TypeScript знает тип link
-                ) => (
-                  <motion.div
-                    key={link.href}
-                    custom={index}
-                    variants={linkVariants}
-                    initial="hidden"
-                    animate="visible"
+              {menuLinks.map((link, index) => (
+                <motion.div
+                  key={link.href}
+                  custom={index}
+                  variants={linkVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  <Link
+                    href={link.href}
+                    className="text-2xl text-text-muted hover:text-text-light transition-colors"
+                    onClick={onClose}
                   >
-                    <Link
-                      href={link.href}
-                      className="text-2xl text-text-muted hover:text-text-light transition-colors"
-                      onClick={onClose}
-                    >
-                      {link.title}
-                    </Link>
-                  </motion.div>
-                )
-              )}
+                    {link.title}
+                  </Link>
+                </motion.div>
+              ))}
             </nav>
 
+            {/* --- ИЗМЕНЕННЫЙ БЛОК CTA --- */}
             <motion.div
-              custom={menuLinks.length} // TypeScript знает тип menuLinks.length
+              custom={menuLinks.length}
               variants={linkVariants}
               initial="hidden"
               animate="visible"
-              className="mt-auto text-center"
+              className="mt-auto text-center space-y-4" // mt-auto прижимает к низу, space-y для отступа
             >
               <Link
                 href={telegramBotLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-[--color-accent-red] hover:bg-[--color-accent-red-hover] text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300"
+                className="block w-full bg-secondary-dark/80 border border-white/20 text-text-light font-semibold py-3 px-8 rounded-lg transition-colors duration-300"
                 onClick={onClose}
               >
-                Начать проект (TG)
+                Создать ТЗ на сайт
+              </Link>
+              <Link
+                href={personalTelegramLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full bg-[--color-accent-red] hover:bg-[--color-accent-red-hover] text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300"
+                onClick={onClose}
+              >
+                Обсудить автоматизацию ИИ
               </Link>
             </motion.div>
           </div>

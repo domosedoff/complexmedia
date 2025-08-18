@@ -6,6 +6,14 @@ import PageWrapper from "@/components/PageWrapper";
 import { CheckCircle } from "lucide-react";
 import { ServiceNavigation } from "@/components/ServiceNavigation"; // Импортируем компонент навигации
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Разработка сайтов на Next.js | Комплекс Медиа",
+  description:
+    "Заказать разработку современных, быстрых и адаптивных сайтов под ключ. Создаем лендинги, корпоративные сайты и веб-приложения на Next.js для вашего бизнеса.",
+};
+
 export default function WebDevelopmentPage() {
   const telegramBotLink = "#"; // ЗАМЕНИТЕ на вашу ссылку TG бота
 

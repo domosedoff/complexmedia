@@ -2,6 +2,14 @@
 import React from "react";
 import PageWrapper from "@/components/PageWrapper";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Политика конфиденциальности | Комплекс Медиа",
+  description:
+    "Политика конфиденциальности и обработки персональных данных сайта complexmedia.ru.",
+};
+
 export default function PrivacyPolicyPage() {
   const operatorName = '"Комплекс Медиа"'; // Или ИП ФИО
   const contactEmail = "info@complexmedia.ru"; // ЗАМЕНИТЕ

@@ -6,6 +6,14 @@ import PageWrapper from "@/components/PageWrapper";
 import { CheckCircle } from "lucide-react";
 import { ServiceNavigation } from "@/components/ServiceNavigation"; // Импортируем
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Разработка AI агентов | Комплекс Медиа",
+  description:
+    "Проектирование и разработка автономных AI агентов для анализа данных, автоматизации сложных бизнес-процессов и создания интеллектуальных ассистентов.",
+};
+
 export default function AiAgentsPage() {
   const telegramBotLink = "#"; // ЗАМЕНИТЕ
   const features = [

@@ -3,25 +3,26 @@ import React from "react";
 import Link from "next/link";
 import { LucideProps } from "lucide-react";
 
+// --- ИЗМЕНЕНИЕ 1: ОБНОВЛЯЕМ ИНТЕРФЕЙС ---
 interface Service {
   icon: React.ComponentType<LucideProps>;
   title: string;
   description: string;
   link: string;
+  ctaText: string; // Добавлено
+  ctaLink: string; // Добавлено
 }
 
+// --- ИЗМЕНЕНИЕ 2: ОБНОВЛЯЕМ ПРОПСЫ КОМПОНЕНТА ---
 interface ServicesSectionProps {
   services: Service[];
-  telegramBotLink: string;
+  // telegramBotLink больше не нужен
 }
 
-const ServicesSection: React.FC<ServicesSectionProps> = ({
-  services,
-  telegramBotLink,
-}) => {
-  // Базовые стили для обеих кнопок
+const ServicesSection: React.FC<ServicesSectionProps> = ({ services }) => {
+  // <-- Убрали telegramBotLink отсюда
   const baseButtonStyles =
-    "inline-block text-sm font-medium py-2 px-5 rounded border transition-all duration-200 ease-in-out transform"; // Добавили transform
+    "inline-block text-sm font-medium py-2 px-5 rounded border transition-all duration-200 ease-in-out transform";
 
   return (
     <section id="services" className="container mx-auto px-4 py-20 md:py-28">
@@ -32,7 +33,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-secondary-dark/60 backdrop-blur-sm p-6 rounded-lg shadow-lg border border-white/10 flex flex-col items-center text-center transition-transform duration-300 hover:scale-[1.03] group"
+            className="bg-secondary-dark/60 backdrop-blur-sm p-6 rounded-lg shadow-lg border border-white/10 flex flex-col items-center text-center group"
           >
             <div className="mb-4 text-[--color-accent-red] transition-transform duration-300 group-hover:scale-110">
               <service.icon size={48} strokeWidth={1.5} />
@@ -44,32 +45,21 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
               {service.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 w-full justify-center mt-auto pt-4 border-t border-white/5">
-              {/* Кнопка Подробнее (Заметный фон и белый текст при наведении) */}
               <Link
                 href={service.link}
-                className={`${baseButtonStyles}
-                           text-[--color-text-muted] border-[--color-text-muted]/30 bg-transparent
-                           hover:bg-[--color-accent-red]/50 {/* <--- Фон 50% красный */}
-                           hover:border-[--color-accent-red]/70 {/* <--- Рамка 70% красная */}
-                           hover:text-white {/* <--- Текст становится БЕЛЫМ */}
-                           hover:shadow-sm hover:-translate-y-px
-                          `}
+                className={`${baseButtonStyles} text-[--color-text-muted] border-[--color-text-muted]/30 bg-transparent hover:bg-[--color-accent-red]/50 hover:border-[--color-accent-red]/70 hover:text-white hover:shadow-sm hover:-translate-y-px`}
               >
                 Подробнее
               </Link>
 
-              {/* Кнопка Создать ТЗ (Добавлена яркость при наведении) */}
+              {/* --- ИЗМЕНЕНИЕ 3: ИСПОЛЬЗУЕМ ДАННЫЕ ИЗ service --- */}
               <Link
-                href={telegramBotLink}
+                href={service.ctaLink} // Используем ссылку из объекта
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${baseButtonStyles}
-                           text-white border-[--color-accent-red] bg-[--color-accent-red] shadow-sm
-                           hover:bg-[--color-accent-red-hover] hover:border-[--color-accent-red-hover] hover:shadow-lg hover:-translate-y-px
-                           hover:brightness-110 {/* <--- Добавили яркость при наведении */}
-                          `}
+                className={`${baseButtonStyles} text-white border-[--color-accent-red] bg-[--color-accent-red] shadow-sm hover:bg-[--color-accent-red-hover] hover:border-[--color-accent-red-hover] hover:shadow-lg hover:-translate-y-px hover:brightness-110`}
               >
-                Создать ТЗ
+                {service.ctaText} {/* Используем текст из объекта */}
               </Link>
             </div>
           </div>

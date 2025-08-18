@@ -1,16 +1,12 @@
 // src/app/page.tsx
-// Убираем импорт motion отсюда
-// import { motion } from 'framer-motion';
-
 // Импорты компонентов секций
 import HeroSection from "@/components/homepage/HeroSection";
 import ServicesSection from "@/components/homepage/ServicesSection";
 import AdvantagesSection from "@/components/homepage/AdvantagesSection";
 import WorkStagesSection from "@/components/homepage/WorkStagesSection";
-import PortfolioPreviewSection from "@/components/homepage/PortfolioPreviewSection";
+// import PortfolioPreviewSection from "@/components/homepage/PortfolioPreviewSection"; // Закомментировано
 import FinalCtaSection from "@/components/homepage/FinalCtaSection";
-// Импортируем новую обертку
-import { AnimatedSectionWrapper } from "@/components/AnimatedSectionWrapper"; // <--- НОВЫЙ ИМПОРТ
+import { AnimatedSectionWrapper } from "@/components/AnimatedSectionWrapper";
 
 // Импорты иконок для данных
 import { BotMessageSquare, CodeXml, BrainCircuit } from "lucide-react";
@@ -33,8 +29,12 @@ import {
 } from "lucide-react";
 
 export default function Home() {
-  // --- ДАННЫЕ ---
-  const telegramBotLink = "https://t.me/complexmedia_bot"; // ЗАМЕНИТЕ
+  // --- НАСТРОЙКА ССЫЛОК ---
+  const telegramBotLink = "https://t.me/complexmedia_bot"; // Ваша ссылка на бота
+  const personalTelegramLink = "https://t.me/domosedoff"; // !!! ЗАМЕНИТЕ НА ВАШУ ЛИЧНУЮ ССЫЛКУ !!!
+  // --- КОНЕЦ НАСТРОЙКИ ---
+
+  // --- ОБНОВЛЕННЫЙ МАССИВ УСЛУГ ---
   const services = [
     {
       icon: CodeXml,
@@ -42,6 +42,8 @@ export default function Home() {
       description:
         "Создаем современные, адаптивные и быстрые сайты – от лендингов до сложных веб-приложений, которые решают задачи вашего бизнеса.",
       link: "/services/web-development",
+      ctaText: "Создать ТЗ", // Текст для кнопки
+      ctaLink: telegramBotLink, // Ссылка на бота
     },
     {
       icon: BotMessageSquare,
@@ -49,6 +51,8 @@ export default function Home() {
       description:
         "Разрабатываем умных Telegram ботов с использованием AI для автоматизации поддержки, продаж, сбора лидов и других задач 24/7.",
       link: "/services/ai-bots",
+      ctaText: "Обсудить проект", // Другой текст
+      ctaLink: personalTelegramLink, // Ссылка на личный TG
     },
     {
       icon: BrainCircuit,
@@ -56,8 +60,12 @@ export default function Home() {
       description:
         "Проектируем и внедряем автономных AI агентов для анализа данных, автоматизации сложных процессов и создания интеллектуальных ассистентов.",
       link: "/services/ai-agents",
+      ctaText: "Обсудить проект", // Другой текст
+      ctaLink: personalTelegramLink, // Ссылка на личный TG
     },
   ];
+  // --- КОНЕЦ ОБНОВЛЕНИЯ МАССИВА ---
+
   const advantages = [
     {
       icon: Target,
@@ -140,13 +148,15 @@ export default function Home() {
         "Предлагаем услуги по дальнейшей поддержке, обновлению и развитию вашего проекта после запуска.",
     },
   ];
+
+  /* // Портфолио временно отключено
   const portfolioPreview = [
     {
       title: "Название Вашего Проекта Сайта",
       description: "Краткое описание задачи и решения для этого сайта.",
       imageUrl: "/portfolio-site-preview.jpg",
       link: "/portfolio/your-site-project",
-    }, // ЗАМЕНИТЕ
+    },
     {
       title: "Пример AI Telegram Бота",
       description:
@@ -162,38 +172,40 @@ export default function Home() {
       link: "/portfolio/example-ai-agent",
     },
   ];
-  // --- КОНЕЦ ДАННЫХ ---
-
-  // Настройки анимации теперь внутри AnimatedSectionWrapper
+  */
 
   return (
     <>
-      {/* Hero не анимируем */}
-      <HeroSection telegramBotLink={telegramBotLink} />
+      <HeroSection
+        telegramBotLink={telegramBotLink}
+        personalTelegramLink={personalTelegramLink}
+      />
 
-      {/* Используем AnimatedSectionWrapper для каждой секции */}
       <AnimatedSectionWrapper amount={0.2}>
-        <ServicesSection
-          services={services}
-          telegramBotLink={telegramBotLink}
-        />
+        {/* Убираем telegramBotLink из пропсов, передаем только services */}
+        <ServicesSection services={services} />
       </AnimatedSectionWrapper>
 
       <AnimatedSectionWrapper amount={0.2}>
         <AdvantagesSection advantages={advantages} />
       </AnimatedSectionWrapper>
 
-      {/* Можно передать другой amount, если нужно */}
       <AnimatedSectionWrapper amount={0.1}>
         <WorkStagesSection workStages={workStages} />
       </AnimatedSectionWrapper>
 
+      {/* Секция портфолио закомментирована */}
+      {/*
       <AnimatedSectionWrapper amount={0.2}>
         <PortfolioPreviewSection portfolioPreview={portfolioPreview} />
       </AnimatedSectionWrapper>
+      */}
 
       <AnimatedSectionWrapper amount={0.2}>
-        <FinalCtaSection telegramBotLink={telegramBotLink} />
+        <FinalCtaSection
+          telegramBotLink={telegramBotLink}
+          personalTelegramLink={personalTelegramLink}
+        />
       </AnimatedSectionWrapper>
     </>
   );

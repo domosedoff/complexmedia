@@ -1,18 +1,24 @@
 // src/app/about/page.tsx
 import React from "react";
 import PageWrapper from "@/components/PageWrapper";
-import { ShieldCheck, TrendingUp, Lightbulb, Handshake } from "lucide-react"; // Убрали неиспользуемые
+import { ShieldCheck, TrendingUp, Lightbulb, Handshake } from "lucide-react";
 
-interface ValueItem {
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  title: string;
-  description: string;
-}
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "О нас - Комплекс Медиа | Экспертиза в AI и веб-разработке",
+  description:
+    "Узнайте о нашей миссии, подходе и ценностях. Мы специализируемся на создании сайтов, AI-ботов и агентов для эффективных коммуникаций вашего бизнеса.",
+};
 
 export default function AboutPage() {
-  const telegramBotLink = "#"; // ЗАМЕНИТЕ
+  // --- НАСТРОЙКА ССЫЛОК ---
+  const telegramBotLink = "https://t.me/complexmedia_bot";
+  // --- ДОБАВЛЕНО: Определение personalTelegramLink ---
+  const personalTelegramLink = "https://t.me/domosedoff"; // ЗАМЕНИТЕ
+  // --- КОНЕЦ ДОБАВЛЕНИЯ ---
 
-  const values: ValueItem[] = [
+  const values = [
     {
       icon: Lightbulb,
       title: "Инновации",
@@ -44,14 +50,12 @@ export default function AboutPage() {
       title="О Комплекс Медиа"
       showCta={true}
       telegramBotLink={telegramBotLink}
+      personalTelegramLink={personalTelegramLink} // Теперь эта переменная определена
     >
+      {/* ... остальной код страницы ... */}
       <div className="space-y-16 md:space-y-20">
-        {/* Секция 1: Миссия и Кто мы */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12 items-start">
-          {/* Блок Миссия/Подход */}
-          {/* ДОБАВЛЯЕМ ФОН, ОТСТУПЫ И ДР. СТИЛИ К ЭТОМУ DIV */}
           <div className="lg:col-span-2 bg-secondary-dark/60 backdrop-blur-sm p-6 md:p-8 rounded-lg border border-white/10 shadow-lg">
-            {/* Применяем prose классы к внутренней обертке текста */}
             <div className="prose prose-invert lg:prose-lg max-w-none">
               <h2 className="text-2xl md:text-3xl font-semibold text-text-light !mt-0 !mb-4">
                 Наша Миссия и Подход
@@ -63,9 +67,7 @@ export default function AboutPage() {
                 </strong>
                 {`, усиленные интеллектуальными технологиями. Наша страсть — превращать сложные технологии в понятные и работающие инструменты для вашего бизнеса.`}
               </p>
-              <p>
-                {`Наша миссия — создавать цифровые решения (сайты, AI-боты, агенты), которые не просто решают текущие задачи, а открывают новые горизонты и возможности роста. Мы не просто пишем код — мы проектируем будущее ваших взаимодействий с клиентами.`}
-              </p>
+              <p>{`Наша миссия — создавать цифровые решения (сайты, AI-боты, агенты), которые не просто решают текущие задачи, а открывают новые горизонты и возможности роста. Мы не просто пишем код — мы проектируем будущее ваших взаимодействий с клиентами.`}</p>
               <p>
                 {`Мы объединяем глубокую `}
                 <strong className="text-text-light">
@@ -75,22 +77,17 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-
-          {/* Блок Кто мы */}
           <div className="bg-secondary-dark/60 backdrop-blur-sm p-6 rounded-lg border border-white/10 shadow-lg lg:sticky lg:top-28">
             <h3 className="text-xl font-semibold text-text-light mb-3">
               Кто мы?
             </h3>
             <div className="text-sm text-text-muted space-y-3">
-              {/* !!! ЗАМЕНИТЕ ЭТОТ ТЕКСТ, ИСПОЛЬЗУЯ ШАБЛОННЫЕ СТРОКИ ИЛИ ' " !!! */}
               <div>{`"Комплекс Медиа" — это [опишите себя: например, 'команда увлеченных разработчиков', 'специалист по веб-технологиям и AI', 'ваш технологический партнер'].`}</div>
               <div>{`Мы специализируемся на создании [перечислите ключевое: 'высокопроизводительных сайтов', 'интеллектуальных чат-ботов', 'автономных AI-решений'].`}</div>
               <div>{`Наш опыт позволяет нам браться за проекты разной сложности и предлагать оптимальные решения.`}</div>
             </div>
           </div>
         </div>
-
-        {/* Секция 2: Ценности */}
         <div>
           <h2 className="text-2xl md:text-3xl font-semibold text-text-light mb-8 text-center">
             Наши Ценности
@@ -102,7 +99,6 @@ export default function AboutPage() {
                 className="flex flex-col items-center text-center bg-secondary-dark/40 p-6 rounded-lg border border-white/10"
               >
                 <div className="text-[--color-accent-red] mb-3">
-                  {/* @ts-expect-error TypeScript может не знать о пропсах size/strokeWidth для этого типа */}
                   <value.icon size={36} strokeWidth={1.5} />
                 </div>
                 <h3 className="text-lg font-semibold text-text-light mb-2">

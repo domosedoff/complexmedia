@@ -6,6 +6,14 @@ import PageWrapper from "@/components/PageWrapper";
 import { CheckCircle } from "lucide-react";
 import { ServiceNavigation } from "@/components/ServiceNavigation"; // Импортируем
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Разработка ИИ Telegram ботов | Комплекс Медиа",
+  description:
+    "Создание и разработка умных Telegram ботов на искусственном интеллекте (AI) для автоматизации поддержки, продаж и сбора лидов. Заказать AI чат-бота для бизнеса.",
+};
+
 export default function AiBotsPage() {
   const telegramBotLink = "#"; // ЗАМЕНИТЕ
   const features = [
