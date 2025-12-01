@@ -12,6 +12,7 @@ const services: ServiceLink[] = [
   { href: "/services/web-development", title: "Сайты" },
   { href: "/services/ai-bots", title: "AI Боты" },
   { href: "/services/ai-agents", title: "AI Агенты" },
+  { href: "/services/digital-asset", title: "Цифровой Актив" },
 ];
 
 export const ServiceNavigation = () => {

@@ -9,7 +9,12 @@ import FinalCtaSection from "@/components/homepage/FinalCtaSection";
 import { AnimatedSectionWrapper } from "@/components/AnimatedSectionWrapper";
 
 // Импорты иконок для данных
-import { BotMessageSquare, CodeXml, BrainCircuit } from "lucide-react";
+import {
+  BotMessageSquare,
+  CodeXml,
+  BrainCircuit,
+  FolderTree,
+} from "lucide-react";
 import {
   Zap,
   Target,
@@ -62,6 +67,15 @@ export default function Home() {
       link: "/services/ai-agents",
       ctaText: "Обсудить проект", // Другой текст
       ctaLink: personalTelegramLink, // Ссылка на личный TG
+    },
+    {
+      icon: FolderTree, // Новая иконка
+      title: "Корпоративный Цифровой Актив",
+      description:
+        "Создаем единую структурированную Базу Знаний компании. Превращаем хаос в данных в системный актив, готовый для внедрения ИИ и масштабирования бизнеса.",
+      link: "/services/digital-asset",
+      ctaText: "Обсудить проект",
+      ctaLink: personalTelegramLink, // Ведем на личный контакт, т.к. услуга сложная
     },
   ];
   // --- КОНЕЦ ОБНОВЛЕНИЯ МАССИВА ---
