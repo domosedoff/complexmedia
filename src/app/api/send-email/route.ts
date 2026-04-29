@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
           error: "Неверные данные формы",
           details: validationResult.error.flatten().fieldErrors,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -37,22 +37,21 @@ export async function POST(req: NextRequest) {
       console.error("Resend API Key is not set.");
       return NextResponse.json(
         { error: "Ошибка конфигурации сервера" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
-    // --- ИЗМЕНЕНИЯ ДЛЯ ОТПРАВКИ БЕЗ ВЕРИФИКАЦИИ ДОМЕНА ---
-    // Используем специальный адрес Resend в поле 'from'
-    const senderEmail = "onboarding@resend.dev";
-    // Получатель ДОЛЖЕН БЫТЬ email'ом вашего аккаунта Resend
-    const emailToSendTo = "domosedov@mail.ru"; // Убедитесь, что это email вашего аккаунта Resend!
+    // 1. Отправителем теперь должен быть адрес на вашем домене
+    const senderEmail = "info@complexmedia.ru";
+
+    // 2. Получателем может быть любой ваш адрес (оставляем как было)
+    const emailToSendTo = "domosedov@mail.ru";
 
     const { data, error } = await resend.emails.send({
-      // В 'from' указываем onboarding@resend.dev. Имя может быть любым.
-      from: `Komplex Media Form <${senderEmail}>`,
-      to: [emailToSendTo], // Отправляем на email вашего аккаунта Resend
+      // Используем ваш домен в поле 'from'
+      from: `Complex Media <${senderEmail}>`,
+      to: [emailToSendTo],
       subject: `Новая заявка с сайта от ${name}`,
-      // Reply-To будет работать, Resend подставит его правильно
       replyTo: contactInfo.includes("@") ? contactInfo : undefined,
       react: ContactFormEmail({
         name,
@@ -61,7 +60,6 @@ export async function POST(req: NextRequest) {
         message,
       }) as React.ReactElement,
     });
-    // --- КОНЕЦ ИЗМЕНЕНИЙ ---
 
     if (error) {
       console.error("Resend error:", error);
@@ -71,7 +69,7 @@ export async function POST(req: NextRequest) {
           error: "Ошибка при отправке сообщения через Resend",
           details: error.message,
         },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -84,7 +82,7 @@ export async function POST(req: NextRequest) {
     console.error("Error in API route:", error);
     return NextResponse.json(
       { error: "Внутренняя ошибка сервера" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
