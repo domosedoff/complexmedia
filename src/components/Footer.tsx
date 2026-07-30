@@ -5,8 +5,6 @@ import Image from "next/image";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  // --- НАСТРОЙКА ССЫЛОК ---
-  const telegramBotLink = "https://t.me/complexmedia_bot"; // Ссылка на бота для ТЗ
   const personalTelegramLink = "https://t.me/domosedoff"; // ЗАМЕНИТЕ на вашу личную ссылку
   const logoPath = "/logo_01.png"; // Ваш путь к лого
   // --- КОНЕЦ НАСТРОЙКИ ---
@@ -23,6 +21,7 @@ const Footer = () => {
                 alt="Комплекс Медиа Логотип"
                 width={120}
                 height={32}
+                className="h-auto"
               />
             </Link>
             <p className="text-sm">&quot;ЭФФЕКТИВНЫЕ КОММУНИКАЦИИ&quot;</p>
@@ -36,6 +35,42 @@ const Footer = () => {
               className="hover:text-text-light transition-colors"
             >
               Услуги
+            </Link>
+            <Link
+              href="/#cases"
+              className="hover:text-text-light transition-colors"
+            >
+              Кейсы
+            </Link>
+            <Link
+              href="/articles"
+              className="hover:text-text-light transition-colors"
+            >
+              Все статьи
+            </Link>
+            <Link
+              href="/articles/ai-implementation-business"
+              className="hover:text-text-light transition-colors"
+            >
+              Как внедрить ИИ
+            </Link>
+            <Link
+              href="/articles/ai-for-sales"
+              className="hover:text-text-light transition-colors"
+            >
+              ИИ для продаж
+            </Link>
+            <Link
+              href="/articles/corporate-knowledge-base"
+              className="hover:text-text-light transition-colors"
+            >
+              База знаний
+            </Link>
+            <Link
+              href="/articles/ai-agent-vs-chatbot"
+              className="hover:text-text-light transition-colors"
+            >
+              Агент или чат-бот
             </Link>
             <Link
               href="/about"
@@ -57,23 +92,13 @@ const Footer = () => {
             <h4 className="font-semibold text-text-light mb-2">
               Свяжитесь с нами
             </h4>
-            {/* Ссылка 1: Создать ТЗ */}
-            <a
-              href={telegramBotLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[--color-accent-red] transition-colors"
-            >
-              Создать ТЗ на сайт
-            </a>
-            {/* Ссылка 2: Обсудить автоматизацию */}
             <a
               href={personalTelegramLink}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-[--color-accent-red] transition-colors"
             >
-              Обсудить автоматизацию ИИ
+              Обсудить внедрение ИИ
             </a>
             {/* Ссылка 3: Другие способы */}
             <Link

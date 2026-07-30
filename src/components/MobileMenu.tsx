@@ -6,19 +6,18 @@ import { motion, AnimatePresence } from "framer-motion";
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
-  telegramBotLink: string;
   personalTelegramLink: string; // Добавляем вторую ссылку
 }
 
 interface MenuLinkItem {
   href: string;
   title: string;
+  nested?: boolean;
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({
   isOpen,
   onClose,
-  telegramBotLink,
   personalTelegramLink,
 }) => {
   const menuVariants = {
@@ -47,6 +46,15 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   const menuLinks: MenuLinkItem[] = [
     { href: "/", title: "Главная" },
     { href: "/#services", title: "Услуги" },
+    { href: "/services/web-development", title: "Разработка сайтов", nested: true },
+    { href: "/services/ai-bots", title: "ИИ-чат-боты", nested: true },
+    { href: "/services/ai-agents", title: "ИИ-агенты", nested: true },
+    { href: "/services/ai-sales-automation", title: "ИИ для продаж", nested: true },
+    { href: "/services/executive-ai-assistant", title: "Помощник руководителя", nested: true },
+    { href: "/services/ai-consulting", title: "ИИ-консалтинг", nested: true },
+    { href: "/services/digital-asset", title: "База знаний", nested: true },
+    { href: "/#cases", title: "Кейсы" },
+    { href: "/articles", title: "Статьи" },
     { href: "/about", title: "О нас" },
     // { href: '/portfolio', title: 'Портфолио' },
     { href: "/contact", title: "Контакты" },
@@ -64,7 +72,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           className="fixed inset-0 top-0 left-0 w-full h-screen bg-primary-dark/95 backdrop-blur-md z-40 overflow-y-auto"
         >
           <div className="container mx-auto px-4 pt-24 pb-10 flex flex-col h-full">
-            <nav className="flex flex-col items-center space-y-5 mb-10">
+            <nav className="flex flex-col items-center space-y-3 mb-10">
               {menuLinks.map((link, index) => (
                 <motion.div
                   key={link.href}
@@ -75,7 +83,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                 >
                   <Link
                     href={link.href}
-                    className="text-2xl text-text-muted hover:text-text-light transition-colors"
+                    className={`transition-colors hover:text-text-light ${
+                      link.nested
+                        ? "text-base text-[--color-accent-red]"
+                        : "text-2xl text-text-muted"
+                    }`}
                     onClick={onClose}
                   >
                     {link.title}
@@ -93,22 +105,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               className="mt-auto text-center space-y-4" // mt-auto прижимает к низу, space-y для отступа
             >
               <Link
-                href={telegramBotLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full bg-secondary-dark/80 border border-white/20 text-text-light font-semibold py-3 px-8 rounded-lg transition-colors duration-300"
-                onClick={onClose}
-              >
-                Создать ТЗ на сайт
-              </Link>
-              <Link
                 href={personalTelegramLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full bg-[--color-accent-red] hover:bg-[--color-accent-red-hover] text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300"
                 onClick={onClose}
               >
-                Обсудить автоматизацию ИИ
+                Обсудить внедрение ИИ
               </Link>
             </motion.div>
           </div>

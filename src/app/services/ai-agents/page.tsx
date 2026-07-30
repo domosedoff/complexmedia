@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import AiAgentsContent from "./Content";
+import { createPageMetadata } from "@/seo";
 
-export const metadata: Metadata = {
-  title: "Разработка ИИ Агентов | Комплекс Медиа",
+export const metadata = createPageMetadata({
+  title: "Разработка ИИ-агентов для бизнеса",
   description:
-    "Проектирование автономных ИИ агентов для автоматизации сложных задач, анализа данных и управления процессами.",
-};
+    "Создаём ИИ-агентов и личных помощников руководителя для работы с почтой, документами, CRM, задачами, аналитикой и корпоративными данными.",
+  path: "/services/ai-agents",
+});
 
 export default function AiAgentsPage() {
   return <AiAgentsContent />;

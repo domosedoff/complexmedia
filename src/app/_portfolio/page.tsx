@@ -1,14 +1,17 @@
 // src/app/portfolio/page.tsx
 import React from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import PageWrapper from "@/components/PageWrapper";
 // import { Layers } from 'lucide-react'; // --- УДАЛЕНО ---
 import { ArrowRight } from "lucide-react"; // Импортируем ArrowRight для кнопки
 
-export default function PortfolioPage() {
-  const telegramBotLink = "#"; // ЗАМЕНИТЕ
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 
+export default function PortfolioPage() {
   const portfolioItems = [
     {
       title: "Название Вашего Проекта Сайта", // ЗАМЕНИТЕ
@@ -47,7 +50,6 @@ export default function PortfolioPage() {
     <PageWrapper
       title="Портфолио"
       showCta={true}
-      telegramBotLink={telegramBotLink}
     >
       <p className="text-center text-lg text-text-muted mb-12 md:mb-16 max-w-3xl mx-auto -mt-4 md:-mt-6">
         Здесь собраны примеры наших работ, демонстрирующие наш опыт в

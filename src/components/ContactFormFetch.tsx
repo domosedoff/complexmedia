@@ -17,6 +17,10 @@ export const ContactFormFetch = () => {
     "Разработка Сайтов",
     "AI Telegram Боты",
     "Разработка AI Агентов",
+    "Автоматизация отдела продаж с ИИ",
+    "Личный ИИ-помощник руководителя",
+    "ИИ-консалтинг и план внедрения",
+    "Корпоративная база знаний",
     "Другой вопрос",
   ];
 
@@ -66,6 +70,7 @@ export const ContactFormFetch = () => {
       if (response.ok && result.success) {
         setStatus("success");
         setMessage(result.message || "Сообщение успешно отправлено!");
+        window.ym?.(103776627, "reachGoal", "contact_form_success");
         formRef.current?.reset();
       } else {
         setStatus("error");

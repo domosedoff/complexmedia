@@ -6,7 +6,6 @@ import { Layout, Smartphone, Zap, Search, Code, Layers } from "lucide-react";
 import { ServiceNavigation } from "@/components/ServiceNavigation";
 
 export default function WebDevelopmentContent() {
-  const telegramBotLink = "https://t.me/complexmedia_bot";
   const personalTelegramLink = "https://t.me/domosedoff";
 
   const technologies = [
@@ -22,8 +21,8 @@ export default function WebDevelopmentContent() {
     <PageWrapper
       title="Разработка Сайтов"
       showCta={true}
-      telegramBotLink={telegramBotLink}
       personalTelegramLink={personalTelegramLink}
+      ctaText="Обсудить разработку сайта"
     >
       <Suspense fallback={<div>Загрузка навигации...</div>}>
         <ServiceNavigation />

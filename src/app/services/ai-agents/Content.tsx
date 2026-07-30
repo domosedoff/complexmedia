@@ -1,12 +1,20 @@
 "use client";
 
 import React, { Suspense } from "react";
+import Link from "next/link";
 import PageWrapper from "@/components/PageWrapper";
-import { Bot, BarChart3, Globe, Brain, UserCog, Workflow } from "lucide-react";
+import {
+  ArrowRight,
+  Bot,
+  BarChart3,
+  Globe,
+  Brain,
+  UserCog,
+  Workflow,
+} from "lucide-react";
 import { ServiceNavigation } from "@/components/ServiceNavigation";
 
 export default function AiAgentsContent() {
-  const telegramBotLink = "https://t.me/complexmedia_bot";
   const personalTelegramLink = "https://t.me/domosedoff";
 
   const technologies = [
@@ -20,10 +28,10 @@ export default function AiAgentsContent() {
 
   return (
     <PageWrapper
-      title="Разработка ИИ Агентов"
+      title="Разработка ИИ-агентов для бизнеса"
       showCta={true}
-      telegramBotLink={telegramBotLink}
       personalTelegramLink={personalTelegramLink}
+      ctaText="Заказать ИИ-агента"
     >
       <Suspense fallback={<div>Загрузка навигации...</div>}>
         <ServiceNavigation />
@@ -89,6 +97,48 @@ export default function AiAgentsContent() {
           </div>
         </div>
 
+        <div className="grid gap-8 rounded-2xl border border-[--color-accent-red]/30 bg-secondary-dark/70 p-8 shadow-lg lg:grid-cols-[1fr_1.2fr]">
+          <div>
+            <div className="mb-4 text-[--color-accent-red]">
+              <UserCog size={36} strokeWidth={1.5} />
+            </div>
+            <h3 className="mb-4 text-2xl font-bold text-text-light">
+              Личный ИИ-помощник руководителя
+            </h3>
+            <p className="leading-relaxed text-text-muted">
+              Получает задачи текстом или голосом, подключается к рабочим
+              инструментам компании и берёт на себя повседневную координацию.
+              Решения и чувствительные действия остаются под контролем
+              руководителя.
+            </p>
+            <Link
+              href="/services/executive-ai-assistant"
+              className="mt-5 inline-flex items-center gap-2 font-semibold text-text-light transition-colors hover:text-[--color-accent-red]"
+            >
+              Подробнее об ИИ-помощнике
+              <ArrowRight size={18} />
+            </Link>
+          </div>
+          <ul className="grid gap-3 text-sm text-text-muted sm:grid-cols-2">
+            {[
+              "Документы, таблицы, сводки и отчёты",
+              "Календарь, задачи и итоги совещаний",
+              "Разбор почты и черновики ответов",
+              "Поиск информации и сравнение предложений",
+              "Контроль CRM, сделок и следующих шагов",
+              "Поиск по корпоративной базе знаний",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex gap-3 rounded-xl border border-white/5 bg-primary-dark/40 p-3"
+              >
+                <span className="text-[--color-accent-red]">•</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
         {/* Отличие от чат-ботов */}
         <div className="bg-secondary-dark/70 backdrop-blur-sm p-8 rounded-2xl border border-white/10 shadow-lg">
           <h3 className="text-2xl font-bold text-text-light mb-4">
@@ -101,6 +151,13 @@ export default function AiAgentsContent() {
             информацию, структурирует её и выдаст готовый результат. Это не
             просто интерфейс, это цифровой сотрудник.
           </p>
+          <Link
+            href="/articles/ai-agent-vs-chatbot"
+            className="mt-5 inline-flex items-center gap-2 font-semibold text-text-light transition-colors hover:text-[--color-accent-red]"
+          >
+            Подробное сравнение ИИ-агента и чат-бота
+            <ArrowRight size={17} />
+          </Link>
         </div>
 
         {/* Сферы применения и Стек */}

@@ -1,9 +1,11 @@
 // src/app/page.tsx
 // Импорты компонентов секций
+import type { Metadata } from "next";
 import HeroSection from "@/components/homepage/HeroSection";
 import ServicesSection from "@/components/homepage/ServicesSection";
 import AdvantagesSection from "@/components/homepage/AdvantagesSection";
 import WorkStagesSection from "@/components/homepage/WorkStagesSection";
+import CasesSection from "@/components/homepage/CasesSection";
 // import PortfolioPreviewSection from "@/components/homepage/PortfolioPreviewSection"; // Закомментировано
 import FinalCtaSection from "@/components/homepage/FinalCtaSection";
 import { AnimatedSectionWrapper } from "@/components/AnimatedSectionWrapper";
@@ -14,12 +16,18 @@ import {
   CodeXml,
   BrainCircuit,
   FolderTree,
+  TrendingUp,
+  UserCog,
+  SearchCheck,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 import {
   Zap,
   Target,
   ShieldCheck,
-  TrendingUp,
   Users,
   BadgePercent,
 } from "lucide-react";
@@ -35,7 +43,6 @@ import {
 
 export default function Home() {
   // --- НАСТРОЙКА ССЫЛОК ---
-  const telegramBotLink = "https://t.me/complexmedia_bot"; // Ваша ссылка на бота
   const personalTelegramLink = "https://t.me/domosedoff"; // !!! ЗАМЕНИТЕ НА ВАШУ ЛИЧНУЮ ССЫЛКУ !!!
   // --- КОНЕЦ НАСТРОЙКИ ---
 
@@ -47,8 +54,8 @@ export default function Home() {
       description:
         "Создаем современные, адаптивные и быстрые сайты – от лендингов до сложных веб-приложений, которые решают задачи вашего бизнеса.",
       link: "/services/web-development",
-      ctaText: "Создать ТЗ", // Текст для кнопки
-      ctaLink: telegramBotLink, // Ссылка на бота
+      ctaText: "Обсудить проект",
+      ctaLink: "/contact",
     },
     {
       icon: BotMessageSquare,
@@ -56,7 +63,7 @@ export default function Home() {
       description:
         "Разрабатываем умных чат-ботов с использованием ИИ для автоматизации поддержки, продаж, сбора лидов и других задач 24/7.",
       link: "/services/ai-bots",
-      ctaText: "Обсудить проект", // Другой текст
+      ctaText: "Заказать ИИ-чат-бота",
       ctaLink: personalTelegramLink, // Ссылка на личный TG
     },
     {
@@ -65,7 +72,7 @@ export default function Home() {
       description:
         "Проектируем и внедряем автономных ИИ агентов для анализа данных, автоматизации сложных процессов и создания интеллектуальных ассистентов.",
       link: "/services/ai-agents",
-      ctaText: "Обсудить проект", // Другой текст
+      ctaText: "Заказать ИИ-агента",
       ctaLink: personalTelegramLink, // Ссылка на личный TG
     },
     {
@@ -74,8 +81,35 @@ export default function Home() {
       description:
         "Создаем единую структурированную Базу Знаний компании. Превращаем хаос в данных в системный актив, готовый для внедрения ИИ и масштабирования бизнеса.",
       link: "/services/digital-asset",
-      ctaText: "Обсудить проект",
+      ctaText: "Заказать корпоративную базу знаний",
       ctaLink: personalTelegramLink, // Ведем на личный контакт, т.к. услуга сложная
+    },
+    {
+      icon: TrendingUp,
+      title: "Автоматизация продаж с ИИ",
+      description:
+        "Автоматизируем квалификацию лидов, подготовку КП, заполнение CRM, контроль следующих шагов и аналитику отдела продаж.",
+      link: "/services/ai-sales-automation",
+      ctaText: "Обсудить автоматизацию продаж",
+      ctaLink: "/contact",
+    },
+    {
+      icon: UserCog,
+      title: "ИИ-помощник руководителя",
+      description:
+        "Создаём личного ИИ-ассистента для работы с почтой, календарём, документами, CRM, совещаниями и корпоративными знаниями.",
+      link: "/services/executive-ai-assistant",
+      ctaText: "Обсудить ИИ-помощника",
+      ctaLink: "/contact",
+    },
+    {
+      icon: SearchCheck,
+      title: "ИИ-консалтинг",
+      description:
+        "Анализируем процессы и данные, выбираем приоритетные сценарии, рассчитываем пилот и готовим план внедрения ИИ.",
+      link: "/services/ai-consulting",
+      ctaText: "Обсудить ИИ-консалтинг",
+      ctaLink: "/contact",
     },
   ];
   // --- КОНЕЦ ОБНОВЛЕНИЯ МАССИВА ---
@@ -123,7 +157,7 @@ export default function Home() {
       icon: MessageSquareText,
       title: "1. Брифинг / Обсуждение",
       description:
-        "Начинаем со сбора требований. Вы можете заполнить бриф в нашем Telegram боте или обсудить проект с нами напрямую.",
+        "Начинаем со сбора требований. Вы можете заполнить форму обратной связи или обсудить проект с нами напрямую.",
     },
     {
       icon: FileText,
@@ -191,13 +225,15 @@ export default function Home() {
   return (
     <>
       <HeroSection
-        telegramBotLink={telegramBotLink}
         personalTelegramLink={personalTelegramLink}
       />
 
       <AnimatedSectionWrapper amount={0.2}>
-        {/* Убираем telegramBotLink из пропсов, передаем только services */}
         <ServicesSection services={services} />
+      </AnimatedSectionWrapper>
+
+      <AnimatedSectionWrapper amount={0.15}>
+        <CasesSection />
       </AnimatedSectionWrapper>
 
       <AnimatedSectionWrapper amount={0.2}>
@@ -217,7 +253,6 @@ export default function Home() {
 
       <AnimatedSectionWrapper amount={0.2}>
         <FinalCtaSection
-          telegramBotLink={telegramBotLink}
           personalTelegramLink={personalTelegramLink}
         />
       </AnimatedSectionWrapper>

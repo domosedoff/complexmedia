@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Suspense } from "react";
+import Link from "next/link";
 import PageWrapper from "@/components/PageWrapper";
 import {
   MessageSquare,
@@ -14,7 +15,6 @@ import {
 import { ServiceNavigation } from "@/components/ServiceNavigation";
 
 export default function AiBotsContent() {
-  const telegramBotLink = "https://t.me/complexmedia_bot";
   const personalTelegramLink = "https://t.me/domosedoff";
 
   const technologies = [
@@ -36,10 +36,10 @@ export default function AiBotsContent() {
 
   return (
     <PageWrapper
-      title="Разработка ИИ Чат-ботов"
+      title="Разработка ИИ-чат-ботов для бизнеса на заказ"
       showCta={true}
-      telegramBotLink={telegramBotLink}
       personalTelegramLink={personalTelegramLink}
+      ctaText="Заказать ИИ-чат-бота"
     >
       <Suspense fallback={<div>Загрузка навигации...</div>}>
         <ServiceNavigation />
@@ -57,8 +57,9 @@ export default function AiBotsContent() {
             .
           </p>
           <p className="text-xl md:text-2xl text-text-light font-medium leading-relaxed">
-            Мы создаем ботов, которые понимают естественный язык, обучаются на
-            ваших данных и решают реальные задачи 24/7.
+            Разрабатываем ИИ-чат-ботов под ключ: настраиваем сценарии и базу
+            знаний, подключаем сайт, мессенджеры и CRM, запускаем и проверяем
+            работу на реальных обращениях.
           </p>
         </div>
 
@@ -189,6 +190,15 @@ export default function AiBotsContent() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="text-center">
+          <Link
+            href="/articles/ai-agent-vs-chatbot"
+            className="inline-flex items-center font-semibold text-text-light transition-colors hover:text-[--color-accent-red]"
+          >
+            Чем ИИ-чат-бот отличается от ИИ-агента →
+          </Link>
         </div>
       </div>
     </PageWrapper>

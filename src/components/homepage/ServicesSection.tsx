@@ -16,11 +16,9 @@ interface Service {
 // --- ИЗМЕНЕНИЕ 2: ОБНОВЛЯЕМ ПРОПСЫ КОМПОНЕНТА ---
 interface ServicesSectionProps {
   services: Service[];
-  // telegramBotLink больше не нужен
 }
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({ services }) => {
-  // <-- Убрали telegramBotLink отсюда
   const baseButtonStyles =
     "inline-block text-sm font-medium py-2 px-5 rounded border transition-all duration-200 ease-in-out transform";
 

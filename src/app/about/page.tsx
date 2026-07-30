@@ -3,17 +3,17 @@ import React from "react";
 import PageWrapper from "@/components/PageWrapper";
 import { ShieldCheck, TrendingUp, Lightbulb, Handshake } from "lucide-react";
 
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/seo";
 
-export const metadata: Metadata = {
-  title: "О нас - Комплекс Медиа | Экспертиза в AI и веб-разработке",
+export const metadata = createPageMetadata({
+  title: "О компании и подходе к ИИ-автоматизации",
   description:
-    "Узнайте о нашей миссии, подходе и ценностях. Мы специализируемся на создании сайтов, AI-ботов и агентов для эффективных коммуникаций вашего бизнеса.",
-};
+    "Комплекс Медиа разрабатывает сайты и внедряет ИИ-решения для бизнеса: чат-ботов, агентов, базы знаний и автоматизацию рабочих процессов.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   // --- НАСТРОЙКА ССЫЛОК ---
-  const telegramBotLink = "https://t.me/complexmedia_bot";
   // --- ДОБАВЛЕНО: Определение personalTelegramLink ---
   const personalTelegramLink = "https://t.me/domosedoff"; // ЗАМЕНИТЕ
   // --- КОНЕЦ ДОБАВЛЕНИЯ ---
@@ -49,7 +49,6 @@ export default function AboutPage() {
     <PageWrapper
       title="О Комплекс Медиа"
       showCta={true}
-      telegramBotLink={telegramBotLink}
       personalTelegramLink={personalTelegramLink} // Теперь эта переменная определена
     >
       {/* ... остальной код страницы ... */}

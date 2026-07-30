@@ -1,12 +1,13 @@
 // src/app/services/digital-asset/page.tsx
-import type { Metadata } from "next";
 import DigitalAssetContent from "./Content"; // Импортируем наш новый файл
+import { createPageMetadata } from "@/seo";
 
-export const metadata: Metadata = {
-  title: "Корпоративный Цифровой Актив | База Знаний для ИИ",
+export const metadata = createPageMetadata({
+  title: "Корпоративная база знаний и цифровой актив",
   description:
-    "Разработка архитектуры корпоративной базы знаний. Превращаем хаос в структурированный цифровой актив, готовый к внедрению Искусственного Интеллекта.",
-};
+    "Создаём корпоративную базу знаний: структурируем документы, управляем версиями и доступом, подключаем точный ИИ-поиск со ссылками на источники.",
+  path: "/services/digital-asset",
+});
 
 export default function DigitalAssetPage() {
   return <DigitalAssetContent />;

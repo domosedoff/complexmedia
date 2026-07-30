@@ -2,6 +2,7 @@
 "use client";
 
 import React, { Suspense } from "react";
+import Link from "next/link";
 import PageWrapper from "@/components/PageWrapper";
 import {
   BrainCircuit,
@@ -14,7 +15,6 @@ import {
 import { ServiceNavigation } from "@/components/ServiceNavigation";
 
 export default function DigitalAssetContent() {
-  const telegramBotLink = "https://t.me/complexmedia_bot";
   const personalTelegramLink = "https://t.me/domosedoff";
 
   const technologies = [
@@ -27,10 +27,10 @@ export default function DigitalAssetContent() {
 
   return (
     <PageWrapper
-      title="Корпоративный Цифровой Актив"
+      title="Корпоративная база знаний"
       showCta={true}
-      telegramBotLink={telegramBotLink}
       personalTelegramLink={personalTelegramLink}
+      ctaText="Заказать корпоративную базу знаний"
     >
       <Suspense fallback={<div>Загрузка навигации...</div>}>
         <ServiceNavigation />
@@ -182,6 +182,15 @@ export default function DigitalAssetContent() {
               ))}
             </div>
           </div>
+        </div>
+
+        <div className="text-center">
+          <Link
+            href="/articles/corporate-knowledge-base"
+            className="inline-flex items-center font-semibold text-text-light transition-colors hover:text-[--color-accent-red]"
+          >
+            Как подготовить документы и подключить ИИ-поиск →
+          </Link>
         </div>
       </div>
     </PageWrapper>

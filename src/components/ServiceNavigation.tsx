@@ -1,4 +1,6 @@
 // src/components/ServiceNavigation.tsx
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // Хук для определения текущего пути
@@ -12,6 +14,9 @@ const services: ServiceLink[] = [
   { href: "/services/web-development", title: "Сайты" },
   { href: "/services/ai-bots", title: "ИИ Боты" },
   { href: "/services/ai-agents", title: "ИИ Агенты" },
+  { href: "/services/ai-sales-automation", title: "ИИ для продаж" },
+  { href: "/services/executive-ai-assistant", title: "Помощник руководителя" },
+  { href: "/services/ai-consulting", title: "ИИ-консалтинг" },
   { href: "/services/digital-asset", title: "Цифровой Актив" },
 ];
 

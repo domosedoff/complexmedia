@@ -4,12 +4,21 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import MobileMenu from "./MobileMenu";
+
+const serviceLinks = [
+  { href: "/services/web-development", title: "Разработка сайтов" },
+  { href: "/services/ai-bots", title: "ИИ-чат-боты" },
+  { href: "/services/ai-agents", title: "ИИ-агенты" },
+  { href: "/services/ai-sales-automation", title: "ИИ для продаж" },
+  { href: "/services/executive-ai-assistant", title: "Помощник руководителя" },
+  { href: "/services/ai-consulting", title: "ИИ-консалтинг" },
+  { href: "/services/digital-asset", title: "База знаний" },
+];
 
 const Header = () => {
   const logoPath = "/logo_01.png"; // ЗАМЕНИТЕ
-  const telegramBotLink = "https://t.me/complexmedia_bot";
   const personalTelegramLink = "https://t.me/domosedoff";
   const logoWidth = 150;
   const logoHeight = 40;
@@ -42,12 +51,13 @@ const Header = () => {
             alt="Комплекс Медиа Логотип"
             width={logoWidth}
             height={logoHeight}
+            className="h-auto"
             priority
           />
         </Link>
 
         {/* Навигационное меню (Десктоп) */}
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className="hidden md:flex items-center space-x-4 lg:space-x-6">
           {/* ... ссылки ... */}
           <Link
             href="/"
@@ -55,11 +65,46 @@ const Header = () => {
           >
             Главная
           </Link>
+          <details className="group relative">
+            <summary className="flex cursor-pointer list-none items-center gap-1 text-[--color-text-muted] transition-colors hover:text-[--color-text-light]">
+              Услуги
+              <ChevronDown
+                size={15}
+                aria-hidden="true"
+                className="transition-transform group-open:rotate-180"
+              />
+            </summary>
+            <div className="absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 pt-3">
+              <div className="rounded-xl border border-white/10 bg-secondary-dark p-2 shadow-2xl">
+                <Link
+                  href="/#services"
+                  className="block rounded-lg px-4 py-2.5 text-sm text-text-muted transition-colors hover:bg-primary-dark hover:text-text-light"
+                >
+                  Все услуги
+                </Link>
+                {serviceLinks.map((service) => (
+                  <Link
+                    key={service.href}
+                    href={service.href}
+                    className="block rounded-lg px-4 py-2.5 text-sm text-text-muted transition-colors hover:bg-primary-dark hover:text-text-light"
+                  >
+                    {service.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </details>
           <Link
-            href="/#services"
+            href="/#cases"
             className="text-[--color-text-muted] hover:text-[--color-text-light] transition-colors"
           >
-            Услуги
+            Кейсы
+          </Link>
+          <Link
+            href="/articles"
+            className="text-[--color-text-muted] hover:text-[--color-text-light] transition-colors"
+          >
+            Статьи
           </Link>
           <Link
             href="/about"
@@ -81,23 +126,14 @@ const Header = () => {
           </Link>
         </nav>
 
-        <div className="hidden md:flex items-center gap-x-3">
-          <Link
-            href={telegramBotLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:inline-block bg-[--color-accent-red] hover:bg-[--color-accent-red-hover] text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-300 whitespace-nowrap"
-          >
-            Создать ТЗ на сайт
-          </Link>
-
+        <div className="hidden lg:flex items-center gap-x-3">
           <Link
             href={personalTelegramLink}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:inline-block bg-[--color-accent-red] hover:bg-[--color-accent-red-hover] text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-300 whitespace-nowrap"
           >
-            Обсудить автоматизацию ИИ
+            Обсудить внедрение ИИ
           </Link>
         </div>
         {/* Кнопка Бургер-меню (Мобильные) */}
@@ -119,7 +155,6 @@ const Header = () => {
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={toggleMobileMenu}
-        telegramBotLink={telegramBotLink}
         personalTelegramLink={personalTelegramLink}
       />
     </header>

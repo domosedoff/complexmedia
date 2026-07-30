@@ -8,8 +8,8 @@ interface PageWrapperProps {
   title?: string;
   className?: string;
   showCta?: boolean;
-  telegramBotLink?: string;
   personalTelegramLink?: string;
+  ctaText?: string;
 }
 
 const PageWrapper: React.FC<PageWrapperProps> = ({
@@ -17,8 +17,8 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   title,
   className = "",
   showCta = false,
-  telegramBotLink = "#",
   personalTelegramLink = "#",
+  ctaText = "Обсудить внедрение ИИ",
 }) => {
   return (
     <section className={`container mx-auto px-4 ${className}`}>
@@ -43,45 +43,25 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
           <p className="text-text-muted mb-8 max-w-lg mx-auto">
             Выберите наиболее подходящий способ для вашего запроса.
           </p>
-          {/* --- ИЗМЕНЕННЫЙ БЛОК КНОПОК --- */}
-          {/* Основные CTA */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-8 mb-6">
-            {" "}
-            {/* Увеличили gap */}
-            {/* Ссылка 1: Создать ТЗ на сайт */}
-            <Link
-              href={telegramBotLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              // Стили текстовой ссылки со стрелкой
-              className="inline-flex items-center justify-center gap-2 text-text-light hover:text-[--color-accent-red] font-semibold transition-colors text-lg"
-            >
-              Создать ТЗ на сайт
-              <ArrowRight size={20} />
-            </Link>
-            {/* Ссылка 2: Обсудить автоматизацию */}
             <Link
               href={personalTelegramLink}
               target="_blank"
               rel="noopener noreferrer"
-              // Стили текстовой ссылки со стрелкой
               className="inline-flex items-center justify-center gap-2 text-text-light hover:text-[--color-accent-red] font-semibold transition-colors text-lg"
             >
-              Обсудить автоматизацию ИИ
+              {ctaText}
               <ArrowRight size={20} />
             </Link>
           </div>
-          {/* Второстепенная ссылка */}
           <div>
             <Link
               href="/contact"
-              // Стили второстепенной ссылки (с рамкой)
               className="inline-flex items-center justify-center gap-2 text-[--color-text-muted] hover:text-[--color-text-light] font-medium py-2 px-6 rounded-lg transition-colors duration-300 border border-[--color-text-muted]/50 hover:border-[--color-text-light]"
             >
               Другие способы связи
             </Link>
           </div>
-          {/* --- КОНЕЦ ИЗМЕНЕНИЙ --- */}
         </div>
       )}
     </section>

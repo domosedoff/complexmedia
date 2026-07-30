@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import AiBotsContent from "./Content";
+import { createPageMetadata } from "@/seo";
 
-export const metadata: Metadata = {
-  title: "Разработка ИИ Чат-ботов | Комплекс Медиа",
+export const metadata = createPageMetadata({
+  title: "Заказать разработку ИИ-чат-бота для бизнеса",
   description:
-    "Создание умных чат-ботов на базе ИИ для Telegram, WhatsApp, VK и других платформ. Автоматизация поддержки, продаж и бизнес-процессов.",
-};
+    "Разработка ИИ-чат-ботов для бизнеса под ключ: сайт и мессенджеры, консультации 24/7, квалификация обращений, запись, поддержка и интеграция с CRM.",
+  path: "/services/ai-bots",
+});
 
 export default function AiBotsPage() {
   return <AiBotsContent />;

@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import WebDevelopmentContent from "./Content";
+import { createPageMetadata } from "@/seo";
 
-export const metadata: Metadata = {
-  title: "Разработка сайтов на Next.js | Комплекс Медиа",
+export const metadata = createPageMetadata({
+  title: "Разработка сайтов на Next.js под ключ",
   description:
-    "Заказать разработку современных, быстрых и адаптивных сайтов под ключ. Создаем лендинги, корпоративные сайты и веб-приложения на Next.js для вашего бизнеса.",
-};
+    "Разрабатываем быстрые адаптивные сайты на Next.js под ключ: лендинги, корпоративные сайты и веб-приложения для задач бизнеса.",
+  path: "/services/web-development",
+});
 
 export default function WebDevelopmentPage() {
   return <WebDevelopmentContent />;
