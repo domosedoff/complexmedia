@@ -1,0 +1,45 @@
+name: Deploy production
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: complexmedia-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+    steps:
+      - name: Check deploy key
+        id: key
+        shell: bash
+        run: |
+          if [ -n "$DEPLOY_SSH_KEY" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::DEPLOY_SSH_KEY is not configured; deploy skipped."
+          fi
+
+      - name: Configure SSH
+        if: steps.key.outputs.ready == 'true'
+        shell: bash
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/complexmedia_deploy
+          chmod 600 ~/.ssh/complexmedia_deploy
+          ssh-keyscan -H -t ed25519 45.67.32.233 > ~/.ssh/known_hosts
+
+      - name: Deploy
+        if: steps.key.outputs.ready == 'true'
+        run: |
+          ssh -i ~/.ssh/complexmedia_deploy ubuntu@45.67.32.233 \
+            'set -o pipefail; cd /var/www/complexmedia; git fetch origin master; git show origin/master:scripts/deploy-production.sh | bash'
