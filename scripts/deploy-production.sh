@@ -26,6 +26,10 @@ rm -f "$favicon_backup"
 
 npm ci
 npm run build
+if [[ ! -f .next/standalone/server.js ]]; then
+  echo "Standalone Next.js server was not generated"
+  exit 1
+fi
 mkdir -p .next/standalone/public .next/standalone/.next
 cp -a public/. .next/standalone/public/
 cp -a .next/static .next/standalone/.next/
@@ -39,4 +43,11 @@ if [[ -r "$environment_file" ]]; then
 fi
 
 pm2 restart complexmedia --update-env
-curl --fail --silent --show-error http://127.0.0.1:3000/ >/dev/null
+for attempt in {1..30}; do
+  if curl --fail --silent --show-error http://127.0.0.1:3000/ >/dev/null; then
+    exit 0
+  fi
+  sleep 1
+done
+echo "Production server did not become ready on port 3000"
+exit 1
