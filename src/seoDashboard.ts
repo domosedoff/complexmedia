@@ -36,6 +36,9 @@ export const trackedQueries = [
 
 const excludedQueries = new Set([
   "complex media",
+  "complex media inc",
+  "комплекс медиа",
+  "медиа комплекс",
   'ооо "комплекс медиа"',
 ]);
 
