@@ -204,3 +204,13 @@
   Google — 2 брендовых запроса; целевые коммерческие запросы показов ещё не дали.
 - Deploy-key на web VPS по-прежнему не установлен: read-only SSH-проверка
   возвращает `Permission denied`, новые production-маршруты остаются заблокированы.
+- 06.08.2026: ручной production deploy завершён на `fed4049`. Главная, статьи,
+  новые услуги и sitemap отвечают `200`; старые Telegram-ссылки отсутствуют.
+- Production `/seo-dashboard` закрыт Basic Auth и отвечает `200`; Google Search
+  Console, Яндекс Вебмастер и Метрика показывают `API подключён`. Production
+  credentials находятся вне Git в `/home/ubuntu/.config/complexmedia`.
+- Яндекс API: статус сайта `OK`, в поиске 8 URL, из них 4 старые страницы услуг;
+  новые статьи и новые услуги пока не появились. Google Search Console за
+  08.07–06.08 не вернул показов по `/articles` и новым `/services`.
+- GitHub Actions workflow пока пропускает SSH deploy, потому что секрет
+  `DEPLOY_SSH_KEY` ещё не добавлен; ручной deploy работает.
