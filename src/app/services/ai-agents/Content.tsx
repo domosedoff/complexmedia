@@ -28,7 +28,7 @@ export default function AiAgentsContent() {
 
   return (
     <PageWrapper
-      title="Разработка ИИ-агентов для бизнеса"
+      title="Заказать ИИ-агента для бизнеса"
       showCta={true}
       personalTelegramLink={personalTelegramLink}
       ctaText="Заказать ИИ-агента"

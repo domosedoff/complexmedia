@@ -15,9 +15,9 @@ import { ServiceNavigation } from "@/components/ServiceNavigation";
 import { createPageMetadata } from "@/seo";
 
 export const metadata = createPageMetadata({
-  title: "Автоматизация отдела продаж с ИИ",
+  title: "Заказать автоматизацию отдела продаж с ИИ",
   description:
-    "Внедряем ИИ в отдел продаж: квалификация лидов, подготовка КП, заполнение CRM, контроль следующих шагов и аналитика в едином процессе.",
+    "Заказать автоматизацию отдела продаж с ИИ: квалификация лидов, подготовка КП, заполнение CRM, контроль следующих шагов и аналитика в едином процессе.",
   path: "/services/ai-sales-automation",
 });
 

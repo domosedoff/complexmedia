@@ -34,6 +34,11 @@ export const trackedQueries = [
   "личный ии помощник руководителя",
 ] as const;
 
+const excludedQueries = new Set([
+  "complex media",
+  'ооо "комплекс медиа"',
+]);
+
 export type Period = { start: string; end: string };
 export type TrafficSource = { name: string; visits: number };
 export type QueryPoint = {
@@ -371,7 +376,7 @@ export async function getSeoDashboardData(
 
   const tracked = new Set(trackedQueries.map(normalizeQuery));
   const discovered = [...byQuery.entries()]
-    .filter(([key]) => !tracked.has(key))
+    .filter(([key]) => !tracked.has(key) && !excludedQueries.has(key))
     .flatMap(([, result]) => [
       ...(result.google.length
         ? [

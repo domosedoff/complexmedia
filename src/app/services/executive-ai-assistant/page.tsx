@@ -15,9 +15,9 @@ import { ServiceNavigation } from "@/components/ServiceNavigation";
 import { createPageMetadata } from "@/seo";
 
 export const metadata = createPageMetadata({
-  title: "ИИ-помощник руководителя для бизнеса",
+  title: "Заказать личного ИИ-помощника руководителя",
   description:
-    "Личный ИИ-ассистент руководителя для работы с почтой, календарём, документами, CRM, совещаниями и корпоративной базой знаний.",
+    "Заказать личного ИИ-помощника руководителя для работы с почтой, календарём, документами, CRM, совещаниями и корпоративной базой знаний.",
   path: "/services/executive-ai-assistant",
 });
 
