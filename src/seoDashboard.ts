@@ -88,7 +88,12 @@ export type SeoDashboardData = {
 const isoDate = /^\d{4}-\d{2}-\d{2}$/;
 
 function toIsoDate(date: Date) {
-  return date.toISOString().slice(0, 10);
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Moscow",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(date);
 }
 
 function shiftDate(date: string, days: number) {
