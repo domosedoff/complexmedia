@@ -70,6 +70,12 @@ function Delta({ value }: { value: number | null }) {
   );
 }
 
+function dateDaysBefore(end: string, days: number) {
+  const date = new Date(`${end}T12:00:00Z`);
+  date.setUTCDate(date.getUTCDate() - days);
+  return date.toISOString().slice(0, 10);
+}
+
 export default async function SeoDashboardPage({
   searchParams,
 }: {
@@ -79,6 +85,8 @@ export default async function SeoDashboardPage({
   const period = getSeoPeriod(params.start, params.end);
   const data = await getSeoDashboardData(period);
   const totalVisits = data.visits ?? 0;
+  const lastDayStart = period.end;
+  const lastThreeDaysStart = dateDaysBefore(period.end, 2);
 
   return (
     <PageWrapper title="SEO-дашборд ComplexMedia">
@@ -116,6 +124,21 @@ export default async function SeoDashboardPage({
             <button className="self-end rounded-lg bg-[--color-accent-red] px-4 py-2 text-sm font-semibold text-white">
               Показать
             </button>
+            <div className="flex flex-wrap items-center gap-2 text-xs sm:col-span-3">
+              <span className="text-text-muted">Быстрый период:</span>
+              <a
+                href={`?start=${lastDayStart}&end=${period.end}`}
+                className="rounded-md border border-white/10 px-2 py-1 text-text-light hover:border-[--color-accent-red]/60"
+              >
+                Последний день
+              </a>
+              <a
+                href={`?start=${lastThreeDaysStart}&end=${period.end}`}
+                className="rounded-md border border-white/10 px-2 py-1 text-text-light hover:border-[--color-accent-red]/60"
+              >
+                Последние 3 дня
+              </a>
+            </div>
           </form>
         </header>
 
@@ -255,9 +278,11 @@ export default async function SeoDashboardPage({
               </tbody>
             </table>
           </div>
-          <p className="border-t border-white/10 px-6 py-4 text-xs text-text-muted">
+            <p className="border-t border-white/10 px-6 py-4 text-xs text-text-muted">
             «—» означает отсутствие подтверждённого показа и позиции в данных
             поисковика за выбранный период. Это не нулевая позиция сайта.
+            Точная проверка выдачи до первого показа требует отдельного
+            rank-tracker и не заменяет данные Search Console/Вебмастера.
           </p>
         </section>
 
