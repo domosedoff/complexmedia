@@ -177,3 +177,10 @@
 - Яндекс уже видит 21 URL сайта; 19 задач переобхода завершены.
 - Google пока передаёт только 2 брендовых запроса, целевые коммерческие ключи — без показов.
 - Добавлены быстрые периоды «Последний день» и «Последние 3 дня».
+
+## 2026-08-10 — incident handoff
+
+- Production incident investigated and contained. Root cause was Next.js 15.3.1 RSC RCE; attacker-launched processes exhausted VPS resources.
+- Current production: commit `0b3c348`, Next.js 15.5.21, clean build, PM2 online, `https://complexmedia.ru/` returns 200.
+- Confirmed cron/profile persistence was removed; quarantine is `/home/ubuntu/complexmedia-incident-20260810`. Mail VPS, Postfix, OpenDKIM, Dovecot and firewall were not changed.
+- Before declaring incident closed: rotate secrets accessible to `ubuntu` (mail VPS SSH key, API/OAuth/SMTP credentials) and approve a clean VPS rebuild. Root disk remains 94% full.
