@@ -34,7 +34,7 @@ const reports = [
   },
   {
     name: "Яндекс Вебмастер",
-    description: "Позиции 30 отслеживаемых запросов в Яндексе",
+    description: `Позиции ${trackedQueries.length} отслеживаемых запросов в Яндексе`,
     href: "https://webmaster.yandex.ru/site/https:complexmedia.ru:443/efficiency/queries/?groupId=SELECTED_QUERIES",
   },
   {

@@ -1,7 +1,7 @@
 // src/components/MobileMenu.tsx
 import React from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -20,7 +20,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   onClose,
   personalTelegramLink,
 }) => {
-  const menuVariants = {
+  const menuVariants: Variants = {
     hidden: {
       x: "100%",
       opacity: 0,
@@ -48,6 +48,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     { href: "/#services", title: "Услуги" },
     { href: "/services/web-development", title: "Разработка сайтов", nested: true },
     { href: "/services/ai-bots", title: "ИИ-чат-боты", nested: true },
+    { href: "/services/voice-ai-consultant", title: "Голосовой ИИ-консультант", nested: true },
     { href: "/services/ai-agents", title: "ИИ-агенты", nested: true },
     { href: "/services/ai-sales-automation", title: "ИИ для продаж", nested: true },
     { href: "/services/executive-ai-assistant", title: "Помощник руководителя", nested: true },

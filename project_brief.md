@@ -2,7 +2,7 @@
 
 - Сайт компании «Комплекс Медиа»: услуги веб-разработки, ИИ-ботов, ИИ-агентов и корпоративного цифрового актива.
 - Стек: Next.js App Router, React, TypeScript, Tailwind CSS, Framer Motion, Nodemailer + SSH/sendmail, React Email, Zod.
-- Production: `complexmedia.ru`, VPS `45.67.32.233`, каталог `/var/www/complexmedia`, Nginx → Next.js на `localhost:3000`, процесс PM2 `complexmedia`.
+- Production: `complexmedia.ru`, VPS `185.65.200.69`, каталог `/var/www/complexmedia`, Nginx → Next.js на `localhost:3000`, systemd-сервис `complexmedia`.
 - Репозиторий: `domosedoff/complexmedia`. Рабочая ветка проекта — `master`; default-ветка `main` почти пуста.
 - Локальная рабочая папка: `D:\yu\Codex\complexmedia site`.
 

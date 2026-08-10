@@ -19,6 +19,7 @@ import {
   TrendingUp,
   UserCog,
   SearchCheck,
+  PhoneCall,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -65,6 +66,15 @@ export default function Home() {
       link: "/services/ai-bots",
       ctaText: "Заказать ИИ-чат-бота",
       ctaLink: personalTelegramLink, // Ссылка на личный TG
+    },
+    {
+      icon: PhoneCall,
+      title: "Голосовой ИИ-консультант",
+      description:
+        "Принимаем звонки, отвечаем на типовые вопросы, квалифицируем обращения и передаём результат сотрудникам или в CRM.",
+      link: "/services/voice-ai-consultant",
+      ctaText: "Заказать голосового ИИ-консультанта",
+      ctaLink: "/contact",
     },
     {
       icon: BrainCircuit,

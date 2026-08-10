@@ -1,5 +1,22 @@
 # Project state
 
+## 2026-08-10 — новый production VPS и HTTPS
+
+- Production работает на `185.65.200.69`: systemd `complexmedia` и Nginx активны.
+- Для `complexmedia.ru` выпущен и установлен Let's Encrypt сертификат; HTTPS отвечает `200`, HTTP перенаправляется на HTTPS.
+- Сертификат действителен до 2026-11-08 и настроено автоматическое продление Certbot.
+- `www.complexmedia.ru` пока указывает на старый VPS `45.67.32.233`; DNS-запись не менялась.
+
+## 2026-08-11 — локальная SEO-услуга голосового ИИ
+
+- Локально добавлена `/services/voice-ai-consultant`: metadata, Service schema, телефонная демонстрация, CTA и сценарии внедрения.
+- Страница добавлена в главную, desktop/mobile-меню, ServiceNavigation и sitemap; в SEO-дашборд добавлены 6 коммерческих запросов.
+- TypeScript проходит; production build компилируется и генерирует 33 маршрута. Финальный standalone-шаг локально блокируется Windows symlink от pnpm.
+- Новая услуга пока не развернута в production и не отправлена на переобход.
+- Для страницы добавлен видимый FAQ и `FAQPage` schema; sitemap получил актуальную дату `2026-08-11`.
+- Read-only production-проверка: корень и live sitemap отвечают `200`, новый URL пока `404` до deploy.
+- Публичные DNS `1.1.1.1` и `8.8.8.8` ещё возвращают старый IP для `www`; отдельный сертификат `www` не выпускался.
+
 Обновлено: 2026-07-30
 
 - Публичный SEO-пакет без `/seo-dashboard`, middleware и OAuth-файлов

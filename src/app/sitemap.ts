@@ -4,7 +4,7 @@ import { businessCases } from "@/businessCases";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://complexmedia.ru";
-  const lastModified = new Date("2026-07-30");
+  const lastModified = new Date("2026-08-11");
 
   return [
     {
@@ -33,6 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/services/ai-bots`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/services/voice-ai-consultant`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.9,

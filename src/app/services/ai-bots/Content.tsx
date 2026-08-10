@@ -199,6 +199,12 @@ export default function AiBotsContent() {
           >
             Чем ИИ-чат-бот отличается от ИИ-агента →
           </Link>
+          <Link
+            href="/services/voice-ai-consultant"
+            className="mt-3 inline-flex items-center font-semibold text-text-muted transition-colors hover:text-[--color-accent-red]"
+          >
+            Нужен ИИ-консультант по телефону? →
+          </Link>
         </div>
       </div>
     </PageWrapper>

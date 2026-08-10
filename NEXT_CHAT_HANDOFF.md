@@ -1,5 +1,18 @@
 # Next chat handoff
 
+## Актуально на 2026-08-10
+
+- Новый production VPS: `185.65.200.69`, пользователь `ubuntu`, systemd `complexmedia`, Nginx.
+- `https://complexmedia.ru/` восстановлен: HTTPS `200`, HTTP → HTTPS; Let's Encrypt до 2026-11-08, Certbot renewal включён.
+- `www.complexmedia.ru` всё ещё указывает на старый VPS `45.67.32.233`; перед включением `www` нужно обновить DNS и выпустить сертификат для него.
+- Mail VPS: `46.23.98.66`, `complexmedia_forn`; web→mail ключ ограничен forced `sendmail`, maintenance-доступ проверен.
+
+## Следующий SEO-шаг
+
+- Локально готова `/services/voice-ai-consultant`; TypeScript проходит, production build компилируется.
+- Перед production deploy нужно показать пользователю локальную страницу; после deploy добавить URL в переобход Google/Яндекса.
+- В `www` DNS всё ещё наблюдался старый IP `45.67.32.233`; после обновления выпустить сертификат для `www`.
+
 - Публичные изменения без дашборда отправлены в GitHub `master`, коммит
   `8641328`. Проверка production после push: `/articles` и
   `/services/ai-sales-automation` отвечают `404`, автодеплоя нет.
@@ -184,3 +197,14 @@
 - Current production: commit `0b3c348`, Next.js 15.5.21, clean build, PM2 online, `https://complexmedia.ru/` returns 200.
 - Confirmed cron/profile persistence was removed; quarantine is `/home/ubuntu/complexmedia-incident-20260810`. Mail VPS, Postfix, OpenDKIM, Dovecot and firewall were not changed.
 - Before declaring incident closed: rotate secrets accessible to `ubuntu` (mail VPS SSH key, API/OAuth/SMTP credentials) and approve a clean VPS rebuild. Root disk remains 94% full.
+
+## 2026-08-11 — SEO continuation
+
+- Local `/services/voice-ai-consultant` now includes visible FAQ, `Service` + `FAQPage` schema,
+  internal navigation, phone CTA and sitemap entry dated `2026-08-11`.
+- Local preview check passed: route and sitemap return `200`; TypeScript/build commands are
+  currently blocked by Windows `EPERM` resolving `C:\Users\darvo`, an environment issue.
+- Production is intentionally unchanged: live voice route is `404` until deploy approval;
+  root and sitemap are `200` on `185.65.200.69`.
+- Before deploy, re-check `www.complexmedia.ru` against `1.1.1.1`/`8.8.8.8`: both still return
+  `45.67.32.233`; update DNS first, then issue the separate `www` certificate.

@@ -10,6 +10,7 @@ import MobileMenu from "./MobileMenu";
 const serviceLinks = [
   { href: "/services/web-development", title: "Разработка сайтов" },
   { href: "/services/ai-bots", title: "ИИ-чат-боты" },
+  { href: "/services/voice-ai-consultant", title: "Голосовой ИИ-консультант" },
   { href: "/services/ai-agents", title: "ИИ-агенты" },
   { href: "/services/ai-sales-automation", title: "ИИ для продаж" },
   { href: "/services/executive-ai-assistant", title: "Помощник руководителя" },

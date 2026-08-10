@@ -13,6 +13,7 @@ interface ServiceLink {
 const services: ServiceLink[] = [
   { href: "/services/web-development", title: "Сайты" },
   { href: "/services/ai-bots", title: "ИИ Боты" },
+  { href: "/services/voice-ai-consultant", title: "Голосовой ИИ" },
   { href: "/services/ai-agents", title: "ИИ Агенты" },
   { href: "/services/ai-sales-automation", title: "ИИ для продаж" },
   { href: "/services/executive-ai-assistant", title: "Помощник руководителя" },
