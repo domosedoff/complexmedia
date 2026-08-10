@@ -78,6 +78,15 @@ export default async function CasePage({
             <p className="text-lg leading-relaxed text-text-muted">
               {item.summary}
             </p>
+            {item.slug === "cosmetology-clinic" && (
+              <Link
+                href="/services/voice-ai-consultant"
+                className="mt-5 inline-flex items-center gap-2 font-semibold text-text-light transition-colors hover:text-[--color-accent-red]"
+              >
+                Голосовой ИИ-консультант для обработки звонков
+                <ArrowRight size={18} />
+              </Link>
+            )}
           </div>
           <div className="rounded-xl border border-white/10 bg-primary-dark/50 p-6">
             <h3 className="mb-3 font-semibold text-text-light">
