@@ -53,6 +53,14 @@ const structuredData = {
       url: "https://complexmedia.ru",
       logo: "https://complexmedia.ru/logo_01.png",
       email: "info@complexmedia.ru",
+      telephone: "+7 (495) 108-53-16",
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+7 (495) 108-53-16",
+        contactType: "sales",
+        areaServed: "RU",
+        availableLanguage: "Russian",
+      },
     },
     {
       "@type": "WebSite",

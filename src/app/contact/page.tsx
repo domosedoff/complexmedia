@@ -37,6 +37,12 @@ export default function ContactPage() {
               Для консультации по разработке сайта, AI-ботам, агентам и другим
               задачам автоматизации.
             </p>
+            <a
+              href="tel:+74951085316"
+              className="text-xl font-semibold text-text-light hover:text-[--color-accent-red] transition-colors mb-4"
+            >
+              +7 (495) 108-53-16
+            </a>
             <Link
               href={personalTelegramLink}
               target="_blank"

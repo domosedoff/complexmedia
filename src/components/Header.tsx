@@ -20,6 +20,8 @@ const serviceLinks = [
 const Header = () => {
   const logoPath = "/logo_01.png"; // ЗАМЕНИТЕ
   const personalTelegramLink = "https://t.me/domosedoff";
+  const phoneNumber = "+7 (495) 108-53-16";
+  const phoneLink = "tel:+74951085316";
   const logoWidth = 150;
   const logoHeight = 40;
 
@@ -127,6 +129,12 @@ const Header = () => {
         </nav>
 
         <div className="hidden lg:flex items-center gap-x-3">
+          <a
+            href={phoneLink}
+            className="text-[--color-text-muted] hover:text-[--color-text-light] transition-colors whitespace-nowrap"
+          >
+            {phoneNumber}
+          </a>
           <Link
             href={personalTelegramLink}
             target="_blank"

@@ -33,6 +33,15 @@ const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
         </div>
 
         <div className="mt-6">
+          <a
+            href="tel:+74951085316"
+            className="inline-flex items-center justify-center text-[--color-text-light] hover:text-[--color-accent-red] font-semibold py-2 px-6 rounded-lg transition-colors duration-300"
+          >
+            +7 (495) 108-53-16
+          </a>
+        </div>
+
+        <div className="mt-2">
           <Link
             href="/contact"
             className="inline-flex items-center justify-center gap-2 text-[--color-text-muted] hover:text-[--color-text-light] font-medium py-2 px-6 rounded-lg transition-colors duration-300 border border-[--color-text-muted]/50 hover:border-[--color-text-light]"

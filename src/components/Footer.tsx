@@ -5,6 +5,8 @@ import Image from "next/image";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const phoneNumber = "+7 (495) 108-53-16";
+  const phoneLink = "tel:+74951085316";
   const personalTelegramLink = "https://t.me/domosedoff"; // ЗАМЕНИТЕ на вашу личную ссылку
   const logoPath = "/logo_01.png"; // Ваш путь к лого
   // --- КОНЕЦ НАСТРОЙКИ ---
@@ -89,6 +91,12 @@ const Footer = () => {
 
           {/* --- ИЗМЕНЕННЫЙ БЛОК 3: КОНТАКТЫ --- */}
           <div className="flex flex-col items-center md:items-end space-y-2">
+            <a
+              href={phoneLink}
+              className="hover:text-[--color-accent-red] transition-colors"
+            >
+              {phoneNumber}
+            </a>
             <h4 className="font-semibold text-text-light mb-2">
               Свяжитесь с нами
             </h4>

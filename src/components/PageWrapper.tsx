@@ -20,6 +20,9 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   personalTelegramLink = "#",
   ctaText = "Обсудить внедрение ИИ",
 }) => {
+  const phoneNumber = "+7 (495) 108-53-16";
+  const phoneLink = "tel:+74951085316";
+
   return (
     <section className={`container mx-auto px-4 ${className}`}>
       {/* Плашка для заголовка */}
@@ -55,6 +58,12 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
             </Link>
           </div>
           <div>
+            <a
+              href={phoneLink}
+              className="inline-flex items-center justify-center text-[--color-text-muted] hover:text-[--color-text-light] font-medium py-2 px-6 rounded-lg transition-colors duration-300 border border-[--color-text-muted]/50 hover:border-[--color-text-light]"
+            >
+              {phoneNumber}
+            </a>
             <Link
               href="/contact"
               className="inline-flex items-center justify-center gap-2 text-[--color-text-muted] hover:text-[--color-text-light] font-medium py-2 px-6 rounded-lg transition-colors duration-300 border border-[--color-text-muted]/50 hover:border-[--color-text-light]"

@@ -60,6 +60,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     { href: "/contact", title: "Контакты" },
   ];
 
+  const phoneNumber = "+7 (495) 108-53-16";
+  const phoneLink = "tel:+74951085316";
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -104,6 +107,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               animate="visible"
               className="mt-auto text-center space-y-4" // mt-auto прижимает к низу, space-y для отступа
             >
+              <a
+                href={phoneLink}
+                className="block text-text-light text-lg font-semibold"
+                onClick={onClose}
+              >
+                {phoneNumber}
+              </a>
               <Link
                 href={personalTelegramLink}
                 target="_blank"
