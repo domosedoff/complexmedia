@@ -36,10 +36,10 @@ jobs:
           install -m 700 -d ~/.ssh
           printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/complexmedia_deploy
           chmod 600 ~/.ssh/complexmedia_deploy
-          ssh-keyscan -H -t ed25519 45.67.32.233 > ~/.ssh/known_hosts
+          ssh-keyscan -H -t ed25519 185.65.200.69 > ~/.ssh/known_hosts
 
       - name: Deploy
         if: steps.key.outputs.ready == 'true'
         run: |
-          ssh -i ~/.ssh/complexmedia_deploy ubuntu@45.67.32.233 \
+          ssh -i ~/.ssh/complexmedia_deploy ubuntu@185.65.200.69 \
             'set -o pipefail; cd /var/www/complexmedia; git fetch origin master; git show origin/master:scripts/deploy-production.sh | bash'

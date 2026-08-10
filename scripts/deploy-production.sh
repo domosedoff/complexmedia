@@ -42,7 +42,15 @@ if [[ -r "$environment_file" ]]; then
   set +a
 fi
 
-pm2 restart complexmedia --update-env
+if command -v systemctl >/dev/null 2>&1 && systemctl list-unit-files complexmedia.service 2>/dev/null | grep -q '^complexmedia\.service'; then
+  sudo systemctl restart complexmedia
+elif command -v pm2 >/dev/null 2>&1; then
+  pm2 restart complexmedia --update-env
+else
+  echo "Neither systemd complexmedia nor PM2 is available" >&2
+  exit 1
+fi
+
 for attempt in {1..30}; do
   if curl --fail --silent --show-error http://127.0.0.1:3000/ >/dev/null; then
     exit 0

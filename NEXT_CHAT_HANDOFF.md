@@ -208,3 +208,15 @@
   root and sitemap are `200` on `185.65.200.69`.
 - Before deploy, re-check `www.complexmedia.ru` against `1.1.1.1`/`8.8.8.8`: both still return
   `45.67.32.233`; update DNS first, then issue the separate `www` certificate.
+
+## 2026-08-11 — post-deploy
+
+- Production commit `874c853` is live on `185.65.200.69`; home, voice service,
+  clinic case and sitemap return `200`. Sitemap contains 22 URLs.
+- Yandex recrawl request for `/services/voice-ai-consultant` accepted and is
+  currently `IN_PROGRESS`.
+- GitHub Actions workflow now targets `185.65.200.69`; deploy script supports
+  the new systemd service and the legacy PM2 fallback. GitHub secret
+  `DEPLOY_SSH_KEY` still must be added manually before automatic deploys run.
+- Google recrawl remains blocked until the Search Console service account gets
+  full access. `www.complexmedia.ru` DNS still points to `45.67.32.233`.

@@ -17,6 +17,15 @@
 - Read-only production-проверка: корень и live sitemap отвечают `200`, новый URL пока `404` до deploy.
 - Публичные DNS `1.1.1.1` и `8.8.8.8` ещё возвращают старый IP для `www`; отдельный сертификат `www` не выпускался.
 
+## 2026-08-11 — production SEO deploy
+
+- Production обновлён до `874c853`: `/services/voice-ai-consultant` и ссылка из
+  `/cases/cosmetology-clinic` отвечают `200`; sitemap содержит 22 URL.
+- Яндекс Вебмастер принял URL голосовой услуги в очередь переобхода; статус
+  `IN_PROGRESS`, task id сохранён только в локальном журнале текущей работы.
+- Google переобход не запускался: доступ сервисного аккаунта к Search Console
+  остаётся read-only, предыдущая отправка sitemap возвращала `403`.
+
 Обновлено: 2026-07-30
 
 - Публичный SEO-пакет без `/seo-dashboard`, middleware и OAuth-файлов
