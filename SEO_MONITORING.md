@@ -123,3 +123,12 @@
   текущий статус задачи — `IN_PROGRESS`.
 - Google sitemap и URL Inspection не автоматизировались: сервисному аккаунту нужен полный доступ
   к ресурсу Search Console; не считать отсутствие Google-данных ошибкой страницы.
+
+## 2026-08-11 — Google Search Console
+
+- В интерфейсе Search Console подтверждено: сервисный аккаунт `complexmedia-seo-dashboard`
+  имеет разрешение «Полный доступ».
+- `/sitemap.xml` повторно отправлен через Search Console и обработан успешно; Google выявил
+  22 страницы.
+- URL `/services/voice-ai-consultant` уже есть в индексе Google; для обновления после deploy
+  отправлен запрос на повторное индексирование.

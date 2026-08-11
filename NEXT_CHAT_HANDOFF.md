@@ -220,3 +220,14 @@
   `DEPLOY_SSH_KEY` still must be added manually before automatic deploys run.
 - Google recrawl remains blocked until the Search Console service account gets
   full access. `www.complexmedia.ru` DNS still points to `45.67.32.233`.
+
+## 2026-08-11 — Google access completed
+
+- В Search Console сервисный аккаунт `complexmedia-seo-dashboard` уже имеет
+  «Полный доступ»; повторно добавлять пользователя не нужно.
+- `/sitemap.xml` отправлен через интерфейс Google и получил статус «Успешно»;
+  найдено 22 страницы.
+- `/services/voice-ai-consultant` уже в индексе Google, запрос на обновление
+  индексирования отправлен и принят.
+- Единственный нерешённый доменный вопрос — публичный `www.complexmedia.ru`
+  всё ещё указывает на `45.67.32.233`.
