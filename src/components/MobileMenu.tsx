@@ -54,6 +54,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     { href: "/services/executive-ai-assistant", title: "Помощник руководителя", nested: true },
     { href: "/services/ai-consulting", title: "ИИ-консалтинг", nested: true },
     { href: "/services/digital-asset", title: "База знаний", nested: true },
+    { href: "/services/ai-platform", title: "Платформа ИИ-сотрудников", nested: true },
     { href: "/#cases", title: "Кейсы" },
     { href: "/articles", title: "Статьи" },
     { href: "/about", title: "О нас" },

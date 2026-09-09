@@ -16,6 +16,7 @@ const serviceLinks = [
   { href: "/services/executive-ai-assistant", title: "Помощник руководителя" },
   { href: "/services/ai-consulting", title: "ИИ-консалтинг" },
   { href: "/services/digital-asset", title: "База знаний" },
+  { href: "/services/ai-platform", title: "Платформа ИИ-сотрудников" },
 ];
 
 const Header = () => {

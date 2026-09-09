@@ -1,5 +1,16 @@
 # Project state
 
+## 2026-09-09 — локальная страница платформы ИИ-сотрудников
+
+- Добавлена `/services/ai-platform`: публичное описание корпоративной платформы,
+  ИИ-сотрудников, базы знаний, каталогов, задач, каналов и контроля ответов.
+- Страница добавлена в desktop/mobile-навигацию, ServiceNavigation, главную и
+  sitemap; добавлены Service/FAQ JSON-LD и SEO metadata.
+- Локальный URL: `http://localhost:3000/services/ai-platform`.
+- Production deploy пока не выполнялся; исходный материал TenChat не удалось
+  автоматически прочитать, поэтому текст собран по актуальному брифу платформы
+  из `D:\\yu\\Codex\\kb` и требует пользовательской проверки перед deploy.
+
 ## 2026-08-10 — новый production VPS и HTTPS
 
 - Production работает на `185.65.200.69`: systemd `complexmedia` и Nginx активны.

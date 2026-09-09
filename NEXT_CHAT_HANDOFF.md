@@ -1,5 +1,15 @@
 # Next chat handoff
 
+## 2026-09-09 — локальная страница платформы
+
+- Готова новая `/services/ai-platform` — «Корпоративная платформа ИИ-сотрудников».
+- Добавлены внутренние ссылки с главной, Header, MobileMenu, ServiceNavigation и
+  sitemap; локальная проверка URL возвращает `200`, title и FAQ schema присутствуют.
+- Preview: `http://localhost:3000/services/ai-platform`.
+- Production не трогался. Текст собран по `D:\\yu\\Codex\\kb\\project_brief.md`,
+  потому что TenChat-страница не отдала содержимое автоматической проверке;
+  перед deploy дождаться проверки пользователя и при необходимости уточнить формулировки.
+
 ## Актуально на 2026-08-10
 
 - Новый production VPS: `185.65.200.69`, пользователь `ubuntu`, systemd `complexmedia`, Nginx.

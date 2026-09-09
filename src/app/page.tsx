@@ -20,6 +20,7 @@ import {
   UserCog,
   SearchCheck,
   PhoneCall,
+  Boxes,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -93,6 +94,15 @@ export default function Home() {
       link: "/services/digital-asset",
       ctaText: "Заказать корпоративную базу знаний",
       ctaLink: personalTelegramLink, // Ведем на личный контакт, т.к. услуга сложная
+    },
+    {
+      icon: Boxes,
+      title: "Платформа ИИ-сотрудников",
+      description:
+        "Объединяем базу знаний, каталоги, роли ИИ-сотрудников и рабочие задачи в едином контуре компании.",
+      link: "/services/ai-platform",
+      ctaText: "Обсудить платформу",
+      ctaLink: "/contact",
     },
     {
       icon: TrendingUp,

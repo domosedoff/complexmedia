@@ -19,6 +19,7 @@ const services: ServiceLink[] = [
   { href: "/services/executive-ai-assistant", title: "Помощник руководителя" },
   { href: "/services/ai-consulting", title: "ИИ-консалтинг" },
   { href: "/services/digital-asset", title: "Цифровой Актив" },
+  { href: "/services/ai-platform", title: "Платформа ИИ" },
 ];
 
 export const ServiceNavigation = () => {
