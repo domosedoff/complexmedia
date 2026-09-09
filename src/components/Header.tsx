@@ -29,6 +29,10 @@ const Header = () => {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const closeServicesMenu = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.currentTarget.closest("details")?.removeAttribute("open");
+  };
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -83,6 +87,7 @@ const Header = () => {
                 <Link
                   href="/#services"
                   className="block rounded-lg px-4 py-2.5 text-sm text-text-muted transition-colors hover:bg-primary-dark hover:text-text-light"
+                  onClick={closeServicesMenu}
                 >
                   Все услуги
                 </Link>
@@ -91,6 +96,7 @@ const Header = () => {
                     key={service.href}
                     href={service.href}
                     className="block rounded-lg px-4 py-2.5 text-sm text-text-muted transition-colors hover:bg-primary-dark hover:text-text-light"
+                    onClick={closeServicesMenu}
                   >
                     {service.title}
                   </Link>
