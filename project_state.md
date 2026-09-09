@@ -1,5 +1,14 @@
 # Project state
 
+## 2026-09-09 — production deploy: закрытие меню услуг
+
+- В desktop Header добавлен обработчик, который закрывает `<details>` после
+  выбора пункта услуги; mobile-меню уже закрывалось через `onClose`.
+- Коммит `3a70439` выложен на `185.65.200.69` под deploy-lock; сборка и
+  перезапуск `complexmedia.service` завершились успешно.
+- Проверено: `https://complexmedia.ru/services/executive-ai-assistant` и
+  локальный health-check на VPS возвращают HTTP `200`.
+
 ## 2026-09-09 — production deploy платформы ИИ-сотрудников
 
 - Добавлена `/services/ai-platform`: публичное описание корпоративной платформы,

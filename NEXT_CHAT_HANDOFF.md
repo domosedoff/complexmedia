@@ -1,5 +1,12 @@
 # Next chat handoff
 
+## 2026-09-09 — production deploy: закрытие меню услуг
+
+- Desktop-меню услуг закрывается сразу после выбора ссылки; исправление в
+  `src/components/Header.tsx`.
+- Коммит `3a70439` развернут на `185.65.200.69`; `complexmedia.service` active,
+  публичный маршрут проверен с HTTP `200`.
+
 ## 2026-09-09 — production deploy платформы
 
 - Готова новая `/services/ai-platform` — «Корпоративная платформа ИИ-сотрудников».
