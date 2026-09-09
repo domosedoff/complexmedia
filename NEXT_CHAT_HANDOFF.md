@@ -1,14 +1,18 @@
 # Next chat handoff
 
-## 2026-09-09 — локальная страница платформы
+## 2026-09-09 — production deploy платформы
 
 - Готова новая `/services/ai-platform` — «Корпоративная платформа ИИ-сотрудников».
 - Добавлены внутренние ссылки с главной, Header, MobileMenu, ServiceNavigation и
   sitemap; локальная проверка URL возвращает `200`, title и FAQ schema присутствуют.
 - Preview: `http://localhost:3000/services/ai-platform`.
-- Production не трогался. Текст собран по `D:\\yu\\Codex\\kb\\project_brief.md`,
-  потому что TenChat-страница не отдала содержимое автоматической проверке;
-  перед deploy дождаться проверки пользователя и при необходимости уточнить формулировки.
+- Коммит `cf3088d` выложен на `185.65.200.69`; `complexmedia.service` перезапущен.
+- Live-проверка: `https://complexmedia.ru/services/ai-platform` и
+  `https://complexmedia.ru/sitemap.xml` возвращают `200`, sitemap содержит новый URL.
+- Текст собран по `D:\\yu\\Codex\\kb\\project_brief.md`, потому что TenChat-страница
+  не отдала содержимое автоматической проверке; пользователь просмотрел локальный preview.
+- В `scripts/deploy-production.sh` исправлена systemd-проверка, которая могла
+  пропустить restart при `pipefail`.
 
 ## Актуально на 2026-08-10
 
