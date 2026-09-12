@@ -1,5 +1,15 @@
 # Project state
 
+## 2026-09-12 — production deploy: защита контактной формы
+
+- Сообщение заявки теперь рендерится как текст с переносами строк; HTML не
+  вставляется через `dangerouslySetInnerHTML`.
+- Добавлены honeypot-поле и rate limit: до 3 заявок за 10 минут с одного IP.
+- Коммит `48e664f` выложен на `185.65.200.69` под deploy-lock; сборка и
+  перезапуск `complexmedia.service` завершились успешно.
+- Проверены production `/`, `/contact`, `/services/ai-platform`, sitemap и
+  honeypot-запрос API: HTTP `200`; deploy-lock свободен.
+
 ## 2026-09-09 — production deploy: закрытие меню услуг
 
 - В desktop Header добавлен обработчик, который закрывает `<details>` после
