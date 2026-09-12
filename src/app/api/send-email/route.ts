@@ -6,6 +6,35 @@ import { createElement } from "react";
 import { z } from "zod";
 import ContactFormEmail from "@/emails/ContactFormEmail";
 
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 3;
+const requestWindows = new Map<string, { count: number; resetAt: number }>();
+
+function getClientIp(req: NextRequest) {
+  return (
+    req.headers.get("x-real-ip")?.trim() ||
+    req.headers.get("x-forwarded-for")?.split(",", 1)[0]?.trim() ||
+    "unknown"
+  );
+}
+
+function isRateLimited(ip: string) {
+  const now = Date.now();
+
+  for (const [key, window] of requestWindows) {
+    if (window.resetAt <= now) requestWindows.delete(key);
+  }
+
+  const current = requestWindows.get(ip);
+  if (!current || current.resetAt <= now) {
+    requestWindows.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+
+  current.count += 1;
+  return current.count > RATE_LIMIT_MAX_REQUESTS;
+}
+
 // Схема валидации Zod
 const FormDataSchema = z.object({
   name: z.string().trim().min(1, "Имя обязательно").max(100),
@@ -16,6 +45,7 @@ const FormDataSchema = z.object({
     .max(200),
   service: z.string().trim().max(100).optional(),
   message: z.string().trim().min(1, "Сообщение обязательно").max(5000),
+  website: z.string().max(200).optional(),
 });
 
 export async function POST(req: NextRequest) {
@@ -33,7 +63,19 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { name, contactInfo, service, message } = validationResult.data;
+    const { name, contactInfo, service, message, website } = validationResult.data;
+
+    // Honeypot: обычный пользователь это поле не видит и не заполняет.
+    if (website?.trim()) {
+      return NextResponse.json({ success: true });
+    }
+
+    if (isRateLimited(getClientIp(req))) {
+      return NextResponse.json(
+        { error: "Слишком много заявок. Попробуйте позже." },
+        { status: 429, headers: { "Retry-After": "600" } },
+      );
+    }
 
     const isWindows = process.platform === "win32";
     const transporter = nodemailer.createTransport({

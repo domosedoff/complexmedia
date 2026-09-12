@@ -175,6 +175,20 @@ export const ContactFormFetch = () => {
           ></textarea>
         </div>
 
+        <div
+          aria-hidden="true"
+          className="absolute -left-[9999px] h-px w-px overflow-hidden"
+        >
+          <label htmlFor="website">Сайт</label>
+          <input
+            id="website"
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
+
         {/* Кнопка отправки */}
         <div>
           <button

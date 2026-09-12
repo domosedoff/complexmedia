@@ -19,6 +19,14 @@ interface ContactFormEmailProps {
   message: string;
 }
 
+const renderMessageLines = (message: string) =>
+  message.split(/\r?\n/).map((line, index) => (
+    <React.Fragment key={index}>
+      {index > 0 && <br />}
+      {line}
+    </React.Fragment>
+  ));
+
 export const ContactFormEmail: React.FC<Readonly<ContactFormEmailProps>> = ({
   name,
   contactInfo,
@@ -49,13 +57,7 @@ export const ContactFormEmail: React.FC<Readonly<ContactFormEmailProps>> = ({
           <Heading as="h2" style={subHeading}>
             Сообщение:
           </Heading>
-          {/* Преобразуем переносы строк в <br> */}
-          <Text
-            style={paragraph}
-            dangerouslySetInnerHTML={{
-              __html: message.replace(/\n/g, "<br />"),
-            }}
-          />
+          <Text style={paragraph}>{renderMessageLines(message)}</Text>
         </Section>
         <Hr style={hr} />
         <Text style={footer}>
