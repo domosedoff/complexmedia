@@ -13,6 +13,7 @@ import {
   Workflow,
 } from "lucide-react";
 import { ServiceNavigation } from "@/components/ServiceNavigation";
+import { CommercialSeoLinks } from "@/components/CommercialSeoLinks";
 
 export default function AiAgentsContent() {
   const personalTelegramLink = "https://t.me/domosedoff";
@@ -201,6 +202,27 @@ export default function AiAgentsContent() {
             </div>
           </div>
         </div>
+
+        <CommercialSeoLinks
+          title="Заказать ИИ-агента для бизнеса"
+          text="Определим повторяющийся процесс, подключим разрешённые источники и рабочие системы, а затем проверим пилот с контролем важных действий. Для сценария только консультаций сравните ИИ-чат-бота с агентом."
+          links={[
+            { href: "/services/ai-bots", label: "Заказать ИИ-чат-бота" },
+            {
+              href: "/services/executive-ai-assistant",
+              label: "ИИ-помощник руководителя",
+            },
+            {
+              href: "/articles/ai-agent-vs-chatbot",
+              label: "Агент или чат-бот",
+            },
+            {
+              href: "/cases/executive-assistant",
+              label: "Демонстрация помощника",
+            },
+          ]}
+          ctaLabel="Обсудить задачу ИИ-агента"
+        />
       </div>
     </PageWrapper>
   );

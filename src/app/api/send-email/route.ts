@@ -43,9 +43,16 @@ const FormDataSchema = z.object({
     .trim()
     .min(1, "Контактная информация обязательна")
     .max(200),
+  company: z.string().trim().max(200).optional(),
+  role: z.string().trim().max(120).optional(),
   service: z.string().trim().max(100).optional(),
   message: z.string().trim().min(1, "Сообщение обязательно").max(5000),
   website: z.string().max(200).optional(),
+  utm_source: z.string().trim().max(100).optional(),
+  utm_medium: z.string().trim().max(100).optional(),
+  utm_campaign: z.string().trim().max(100).optional(),
+  utm_term: z.string().trim().max(100).optional(),
+  utm_content: z.string().trim().max(100).optional(),
 });
 
 export async function POST(req: NextRequest) {
@@ -63,7 +70,20 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { name, contactInfo, service, message, website } = validationResult.data;
+    const {
+      name,
+      contactInfo,
+      company,
+      role,
+      service,
+      message,
+      website,
+      utm_source,
+      utm_medium,
+      utm_campaign,
+      utm_term,
+      utm_content,
+    } = validationResult.data;
 
     // Honeypot: обычный пользователь это поле не видит и не заполняет.
     if (website?.trim()) {
@@ -114,8 +134,15 @@ export async function POST(req: NextRequest) {
         createElement(ContactFormEmail, {
           name,
           contactInfo,
+          company,
+          role,
           service,
           message,
+          utmSource: utm_source,
+          utmMedium: utm_medium,
+          utmCampaign: utm_campaign,
+          utmTerm: utm_term,
+          utmContent: utm_content,
         }),
       ),
     });

@@ -8,6 +8,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import PageWrapper from "@/components/PageWrapper";
+import { CommercialSeoLinks } from "@/components/CommercialSeoLinks";
 import { createPageMetadata } from "@/seo";
 
 export const metadata = createPageMetadata({
@@ -371,6 +372,21 @@ export default function CorporateKnowledgeBaseArticle() {
               </Link>
             </div>
           </section>
+
+          <CommercialSeoLinks
+            title="Как заказать корпоративную базу знаний"
+            text="Для первого этапа достаточно документов одного процесса и набора контрольных вопросов. Мы поможем очистить источники, настроить доступы и проверить качество ИИ-поиска до расширения проекта."
+            links={[
+              {
+                href: "/services/digital-asset",
+                label: "Заказать базу знаний",
+              },
+              { href: "/services/ai-platform", label: "ИИ Harness для бизнеса" },
+              { href: "/services/ai-agents", label: "Подключить ИИ-агента" },
+              { href: "/cases/metal-production", label: "Демонстрация решения" },
+            ]}
+            ctaLabel="Обсудить базу знаний"
+          />
         </article>
       </PageWrapper>
     </>

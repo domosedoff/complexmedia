@@ -13,6 +13,7 @@ import {
   Search,
 } from "lucide-react";
 import { ServiceNavigation } from "@/components/ServiceNavigation";
+import { CommercialSeoLinks } from "@/components/CommercialSeoLinks";
 
 export default function DigitalAssetContent() {
   const personalTelegramLink = "https://t.me/domosedoff";
@@ -192,6 +193,24 @@ export default function DigitalAssetContent() {
             Как подготовить документы и подключить ИИ-поиск →
           </Link>
         </div>
+
+        <CommercialSeoLinks
+          title="Заказать корпоративную базу знаний"
+          text="Начнём с документов одного процесса или подразделения: наведём порядок в источниках, настроим права и проверим ИИ-поиск на контрольных вопросах. При необходимости свяжем базу знаний с цифровыми сотрудниками и продажами."
+          links={[
+            { href: "/services/ai-platform", label: "ИИ Harness для бизнеса" },
+            { href: "/services/ai-agents", label: "Заказать ИИ-агента" },
+            {
+              href: "/articles/corporate-knowledge-base",
+              label: "Как подготовить базу знаний",
+            },
+            {
+              href: "/cases/metal-production",
+              label: "Демонстрация для производства",
+            },
+          ]}
+          ctaLabel="Обсудить базу знаний"
+        />
       </div>
     </PageWrapper>
   );

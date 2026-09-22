@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import PageWrapper from "@/components/PageWrapper";
 import { ServiceNavigation } from "@/components/ServiceNavigation";
+import { CommercialSeoLinks } from "@/components/CommercialSeoLinks";
 import { createPageMetadata } from "@/seo";
 
 export const metadata = createPageMetadata({
@@ -243,6 +244,27 @@ export default function AiSalesAutomationPage() {
               </Link>
             </div>
           </section>
+
+          <CommercialSeoLinks
+            title="Заказать автоматизацию отдела продаж с ИИ"
+            text="Разберём воронку и выберем один измеримый сценарий: квалификацию лидов, подготовку КП, заполнение CRM или контроль следующего шага. Важные решения остаются за менеджером."
+            links={[
+              { href: "/services/ai-bots", label: "ИИ-чат-бот для лидов" },
+              {
+                href: "/services/executive-ai-assistant",
+                label: "ИИ-помощник руководителя",
+              },
+              {
+                href: "/articles/ai-for-sales",
+                label: "Руководство по ИИ для продаж",
+              },
+              {
+                href: "/cases/equipment-sales",
+                label: "Демонстрация B2B-продаж",
+              },
+            ]}
+            ctaLabel="Обсудить пилот продаж"
+          />
         </div>
       </PageWrapper>
     </>

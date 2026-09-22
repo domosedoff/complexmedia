@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import PageWrapper from "@/components/PageWrapper";
 import { ServiceNavigation } from "@/components/ServiceNavigation";
+import { CommercialSeoLinks } from "@/components/CommercialSeoLinks";
 import { createPageMetadata } from "@/seo";
 
 export const metadata = createPageMetadata({
@@ -232,6 +233,27 @@ export default function VoiceAiConsultantPage() {
               ))}
             </div>
           </section>
+
+          <CommercialSeoLinks
+            title="Заказать голосового ИИ-консультанта"
+            text="Опишем сценарии звонков, подключим базу знаний и телефонию, а затем проверим качество диалогов на реальных формулировках. Сложные обращения и решения остаются под контролем сотрудника."
+            links={[
+              { href: "/services/ai-bots", label: "ИИ-чат-бот для бизнеса" },
+              {
+                href: "/services/ai-sales-automation",
+                label: "ИИ для отдела продаж",
+              },
+              {
+                href: "/articles/ai-agent-vs-chatbot",
+                label: "Как выбрать формат ИИ",
+              },
+              {
+                href: "/cases/cosmetology-clinic",
+                label: "Демонстрация для клиники",
+              },
+            ]}
+            ctaLabel="Обсудить голосовой сценарий"
+          />
         </div>
       </PageWrapper>
     </>

@@ -15,8 +15,15 @@ import {
 interface ContactFormEmailProps {
   name: string;
   contactInfo: string;
+  company?: string;
+  role?: string;
   service?: string; // Сделаем необязательным на всякий случай
   message: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmTerm?: string;
+  utmContent?: string;
 }
 
 const renderMessageLines = (message: string) =>
@@ -30,8 +37,15 @@ const renderMessageLines = (message: string) =>
 export const ContactFormEmail: React.FC<Readonly<ContactFormEmailProps>> = ({
   name,
   contactInfo,
+  company,
+  role,
   service,
   message,
+  utmSource,
+  utmMedium,
+  utmCampaign,
+  utmTerm,
+  utmContent,
 }) => (
   <Html>
     <Head />
@@ -46,12 +60,35 @@ export const ContactFormEmail: React.FC<Readonly<ContactFormEmailProps>> = ({
           <Text style={paragraph}>
             <strong>Контакт (Email/Telegram):</strong> {contactInfo}
           </Text>
+          {company && (
+            <Text style={paragraph}>
+              <strong>Компания:</strong> {company}
+            </Text>
+          )}
+          {role && (
+            <Text style={paragraph}>
+              <strong>Роль:</strong> {role}
+            </Text>
+          )}
           {service && (
             <Text style={paragraph}>
               <strong>Услуга:</strong> {service}
             </Text>
           )}
         </Section>
+        {(utmSource || utmMedium || utmCampaign || utmTerm || utmContent) && (
+          <>
+            <Hr style={hr} />
+            <Section style={section}>
+              <Text style={paragraph}>
+                <strong>Источник:</strong>{" "}
+                {[utmSource, utmMedium, utmCampaign, utmTerm, utmContent]
+                  .filter(Boolean)
+                  .join(" / ")}
+              </Text>
+            </Section>
+          </>
+        )}
         <Hr style={hr} />
         <Section style={section}>
           <Heading as="h2" style={subHeading}>

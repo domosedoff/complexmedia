@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import PageWrapper from "@/components/PageWrapper";
 import { ServiceNavigation } from "@/components/ServiceNavigation";
+import { CommercialSeoLinks } from "@/components/CommercialSeoLinks";
 import { createPageMetadata } from "@/seo";
 
 export const metadata = createPageMetadata({
@@ -239,6 +240,30 @@ export default function ExecutiveAiAssistantPage() {
               <ArrowRight size={18} />
             </Link>
           </section>
+
+          <CommercialSeoLinks
+            title="Заказать личного ИИ-помощника руководителя"
+            text="Начнём с рабочего контура руководителя: почты, задач, документов, CRM и сводок. Зафиксируем границы доступа и оставим чувствительные действия на подтверждении."
+            links={[
+              {
+                href: "/services/ai-agents",
+                label: "Разработка ИИ-агента",
+              },
+              {
+                href: "/services/ai-sales-automation",
+                label: "ИИ для отдела продаж",
+              },
+              {
+                href: "/articles/ai-implementation-business",
+                label: "Как выбрать первый пилот",
+              },
+              {
+                href: "/cases/executive-assistant",
+                label: "Демонстрация помощника",
+              },
+            ]}
+            ctaLabel="Обсудить ИИ-помощника"
+          />
         </div>
       </PageWrapper>
     </>

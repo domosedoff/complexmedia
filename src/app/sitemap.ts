@@ -5,6 +5,7 @@ import { businessCases } from "@/businessCases";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://complexmedia.ru";
   const lastModified = new Date("2026-08-11");
+  const seoLastModified = new Date("2026-09-22");
 
   return [
     {
@@ -33,31 +34,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/services/ai-bots`,
-      lastModified,
+      lastModified: seoLastModified,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/services/voice-ai-consultant`,
-      lastModified,
+      lastModified: seoLastModified,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/services/ai-agents`,
-      lastModified,
+      lastModified: seoLastModified,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/services/ai-sales-automation`,
-      lastModified,
+      lastModified: seoLastModified,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/services/executive-ai-assistant`,
-      lastModified,
+      lastModified: seoLastModified,
       changeFrequency: "monthly",
       priority: 0.9,
     },
@@ -69,13 +70,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/services/digital-asset`,
-      lastModified,
+      lastModified: seoLastModified,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/services/ai-platform`,
-      lastModified: new Date("2026-09-09"),
+      lastModified: seoLastModified,
       changeFrequency: "monthly",
       priority: 0.9,
     },
@@ -93,19 +94,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/articles/ai-implementation-business`,
-      lastModified,
+      lastModified: seoLastModified,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/articles/ai-for-sales`,
-      lastModified,
+      lastModified: seoLastModified,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/articles/corporate-knowledge-base`,
-      lastModified,
+      lastModified: seoLastModified,
       changeFrequency: "monthly",
       priority: 0.8,
     },

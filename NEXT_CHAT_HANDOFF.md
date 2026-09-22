@@ -1,5 +1,20 @@
 # Next chat handoff
 
+## 2026-09-22 — локальный SEO-пакет готов, production не менялся
+
+- Завершена перелинковка шести услуг через `CommercialSeoLinks`: чат-боты,
+  ИИ-агенты, автоматизация продаж, база знаний, ИИ-помощник руководителя и
+  голосовой ИИ-консультант.
+- В трёх приоритетных статьях добавлены блоки первого пилота/заказа с CTA:
+  `ai-implementation-business`, `ai-for-sales` и `corporate-knowledge-base`.
+- Sitemap обновляет `lastModified` только у изменённых услуг, Harness и этих
+  трёх статей; demo и `/seo-dashboard` по-прежнему не индексируются.
+- Проверки пройдены: TypeScript, ESLint, `git diff --check`, production build
+  (34 страницы); локально 10 целевых URL дали `200`, один H1 и один canonical,
+  sitemap содержит 23 URL, demo сохранил `noindex`.
+- Production не деплоился. Commit/push, health-check VPS, отправка sitemap и
+  переобходы Google/Яндекса — только после отдельного подтверждения пользователя.
+
 ## 2026-09-22 — продолжение без контекста
 
 Сначала прочитать `PROJECT_PLAN.md`, затем этот блок, и только после этого

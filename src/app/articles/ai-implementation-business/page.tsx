@@ -8,6 +8,7 @@ import {
   Target,
 } from "lucide-react";
 import PageWrapper from "@/components/PageWrapper";
+import { CommercialSeoLinks } from "@/components/CommercialSeoLinks";
 import { createPageMetadata } from "@/seo";
 
 export const metadata = createPageMetadata({
@@ -377,6 +378,20 @@ export default function AiImplementationBusinessArticle() {
               </Link>
             </div>
           </section>
+
+          <CommercialSeoLinks
+            title="Как заказать первый пилот по внедрению ИИ"
+            text="На старте достаточно одного повторяющегося процесса, доступных данных и владельца результата. Поможем выбрать сценарий, определить границы и зафиксировать KPI до разработки."
+            links={[
+              { href: "/services/ai-consulting", label: "Заказать ИИ-консалтинг" },
+              { href: "/services/ai-platform", label: "ИИ Harness для бизнеса" },
+              {
+                href: "/services/ai-agents",
+                label: "Заказать ИИ-агента",
+              },
+            ]}
+            ctaLabel="Обсудить первый пилот"
+          />
         </article>
       </PageWrapper>
     </>
