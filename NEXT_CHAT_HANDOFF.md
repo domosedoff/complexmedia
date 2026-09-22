@@ -1,5 +1,85 @@
 # Next chat handoff
 
+## 2026-09-22 — продолжение без контекста
+
+Сначала прочитать `PROJECT_PLAN.md`, затем этот блок, и только после этого
+открывать исходники. Пользователь просит выполнить SEO-пакет: проверить 404 и
+`noindex`, выложить обновлённый ИИ Harness, усилить шесть коммерческих услуг,
+перелинковать страницы, подготовить/усилить три коммерческие статьи, отправить
+sitemap и запросить переобход. Production deploy этого пакета разрешён, но
+сначала нужен локальный health-check и сохранение чужого diff.
+
+### С чего начать
+
+```powershell
+cd 'C:\Users\darvo\Documents\ComplexMedia Site\repo-hotfix'
+git status --short
+git diff --stat
+```
+
+Незакоммиченные изменения, которые принадлежат текущей задаче:
+
+- `src/app/services/ai-platform/page.tsx`
+- `src/components/AiPlatformInteractive.tsx`
+- `src/app/api/send-email/route.ts`
+- `src/emails/ContactFormEmail.tsx`
+- `src/components/CommercialSeoLinks.tsx`
+- `src/app/services/ai-bots/Content.tsx`
+
+Не терять их и не делать `reset`, `checkout` или общий pull поверх них. Общий
+SEO-блок пока начат только для ИИ-чат-ботов; завершить его на страницах
+`ai-agents`, `ai-sales-automation`, `digital-asset`,
+`executive-ai-assistant`, `voice-ai-consultant`, затем обработать три статьи.
+
+### Контрольные факты
+
+- Production: `185.65.200.69`, `/var/www/complexmedia`, systemd
+  `complexmedia`; deploy только через `/tmp/complexmedia.deploy.lock`.
+- Старый `45.67.32.233` считать скомпрометированным и не использовать.
+- Mail VPS: `46.23.98.66`, `complexmedia_forn`; Postfix/OpenDKIM/Dovecot/
+  firewall и чужие каталоги не менять.
+- Ветка GitHub — `master`, default `main` не использовать.
+- `/seo-dashboard` защищён Basic Auth и намеренно `noindex`; demo/portfolio также
+  не возвращать в индексируемый sitemap.
+- Брендовые ключи исключены из SEO KPI: `complex media`, `complex media inc`,
+  `комплекс медиа`, `медиа комплекс`, `ооо "комплекс медиа"`.
+
+### Проверка и deploy
+
+Выполнить `npx tsc --noEmit`, ESLint по изменённым файлам, `git diff --check`
+и `npm run build`. Windows может завершить только standalone symlink с EPERM;
+компиляция должна пройти, а Linux build — в deploy script. Проверить локально
+`/services/ai-platform`, шесть услуг, три статьи и `/sitemap.xml`; затем commit
+и push в `master`. Перед удалённым запуском сверить `git status --short`, после
+него проверить systemd, HTTPS, формы, mail route и каждый изменённый URL.
+
+### Search Console и Яндекс
+
+Последняя точка: Google 22 indexed/10 not indexed (4 noindex, 3 404), sitemap
+23 URL processed; Google 3-month baseline 1 click/69 impressions/avg position
+43.1. Яндекс baseline 33 impressions/3 clicks за 2026-08-20—2026-09-20.
+После deploy проверить конкретные URL в Indexing/URL Inspection, повторно
+отправить sitemap и поставить приоритетные URL в переобход Google/Яндекса.
+Не считать прочерк позицией 0 и не обещать мгновенную индексацию.
+
+### Аналитика и внешнее продвижение после технического пакета
+
+- Метрика consent-gated: проверить визит на `https://complexmedia.ru` после
+  «Разрешить» и наличие `mc.yandex.ru`; нули за неделю не доказывают поломку
+  без такого теста. Ежедневное хранение API-данных ещё не реализовано.
+- Внешние каталоги: RUSSOFT (ИНН ИП `773177886200`), BPMSoft, Лидер ИИ,
+  PickTech; тексты 10 персональных предложений лежат в
+  `SEO_PARTNER_OUTREACH.md`. Для каталогов разрешены телефон
+  `+7 (495) 108-53-16` и `domosedov@mail.ru`; `info@complexmedia.ru` пока нет.
+  Хабр отложен. Никакой массовой рассылки, покупки ссылок или накрутки.
+- GitHub Actions уже подготовлен, но `DEPLOY_SSH_KEY` нужно добавить вручную в
+  GitHub Secrets; это сокращает ручные шаги, но не является обязательным для
+  текущего deploy.
+
+По завершении добавить commit, health-check, sitemap и статусы переобхода в
+`project_state.md` и этот handoff. Подробный критерий готовности — в
+`PROJECT_PLAN.md`.
+
 ## 2026-09-12 — production deploy: защита контактной формы
 
 - Коммит `48e664f` развернут на `185.65.200.69`: HTML-инъекция в сообщении
