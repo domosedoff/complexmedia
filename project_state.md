@@ -13,8 +13,22 @@
   `npm run build` прошли; Next.js сгенерировал 34 страницы.
 - Локальный preview health-check: 10 целевых URL вернули `200`, каждый имеет
   один H1 и один canonical; sitemap содержит 23 URL. Production не деплоился.
-- Commit/push, production deploy под lock, повторная отправка sitemap и
-  запросы переобхода Google/Яндекса остаются pending до отдельного подтверждения.
+- Commit/push и production deploy записаны ниже; повторная отправка sitemap и
+  запросы переобхода Google/Яндекса остаются pending.
+
+## 2026-09-22 — production deploy `6003ddf`
+
+- Commit `6003ddf` отправлен в `origin/master` и выложен на
+  `185.65.200.69:/var/www/complexmedia` штатным deploy-скриптом с внутренним
+  `/tmp/complexmedia.deploy.lock`.
+- Production build прошёл, `complexmedia.service` active, production checkout
+  чистый и совпадает с `origin/master`.
+- Live health-check: главная, Harness, шесть услуг, три статьи и sitemap —
+  HTTP `200`; sitemap содержит 23 URL, `/seo-dashboard` и demo в нём отсутствуют.
+- Все 10 целевых страниц имеют один H1 и один canonical. Безопасный honeypot
+  POST `/api/send-email` вернул HTTP `200` без отправки письма.
+- Повторная отправка sitemap и запросы переобхода Google/Яндекса не выполнялись;
+  это следующий отдельный SEO-шаг.
 
 ## 2026-09-22 — authoritative handoff state
 

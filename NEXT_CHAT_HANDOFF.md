@@ -1,6 +1,6 @@
 # Next chat handoff
 
-## 2026-09-22 — локальный SEO-пакет готов, production не менялся
+## 2026-09-22 — локальный SEO-пакет готов
 
 - Завершена перелинковка шести услуг через `CommercialSeoLinks`: чат-боты,
   ИИ-агенты, автоматизация продаж, база знаний, ИИ-помощник руководителя и
@@ -12,8 +12,21 @@
 - Проверки пройдены: TypeScript, ESLint, `git diff --check`, production build
   (34 страницы); локально 10 целевых URL дали `200`, один H1 и один canonical,
   sitemap содержит 23 URL, demo сохранил `noindex`.
-- Production не деплоился. Commit/push, health-check VPS, отправка sitemap и
-  переобходы Google/Яндекса — только после отдельного подтверждения пользователя.
+- Production deploy, commit/push и health-check записаны ниже; отправка sitemap и
+  переобходы Google/Яндекса остаются отдельным SEO-шагом.
+
+## 2026-09-22 — production deploy завершён
+
+- Commit `6003ddf` отправлен в `origin/master` и выложен на
+  `185.65.200.69:/var/www/complexmedia`; `complexmedia.service` active.
+- Штатный deploy выполнил fast-forward, `npm ci`, production build на 34
+  страницах и readiness-check; deploy lock свободен после завершения.
+- Live-проверка: главная, Harness, шесть услуг, три статьи и sitemap вернули
+  `200`; sitemap содержит 23 URL, `/seo-dashboard` и demo не включены.
+- Все 10 целевых страниц имеют один H1 и canonical; honeypot формы проверен
+  безопасным POST `200`, письмо не отправлялось.
+- Sitemap/переобходы Google и Яндекса пока не отправлялись; выполнить их отдельным
+  SEO-шагом после согласования дневного приоритета URL.
 
 ## 2026-09-22 — продолжение без контекста
 
