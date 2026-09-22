@@ -81,6 +81,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/solutions`,
+      lastModified: seoLastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    ...[
+      "ai-sales-automation",
+      "corporate-knowledge-base",
+      "executive-ai-assistant",
+      "voice-ai-consultant",
+      "ai-implementation",
+      "ai-support-agent",
+    ].map((slug) => ({
+      url: `${baseUrl}/solutions/${slug}`,
+      lastModified: seoLastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
+    {
       url: `${baseUrl}/privacy-policy`,
       lastModified,
       changeFrequency: "yearly",

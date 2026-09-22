@@ -117,6 +117,12 @@ const Header = () => {
             Статьи
           </Link>
           <Link
+            href="/solutions"
+            className="text-[--color-text-muted] hover:text-[--color-text-light] transition-colors"
+          >
+            Решения
+          </Link>
+          <Link
             href="/about"
             className="text-[--color-text-muted] hover:text-[--color-text-light] transition-colors"
           >
