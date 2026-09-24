@@ -1,10 +1,11 @@
 // src/components/Header.tsx
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import MobileMenu from "./MobileMenu";
 
 const serviceLinks = [
@@ -28,6 +29,8 @@ const Header = () => {
   const logoHeight = 40;
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const servicesMenuRef = useRef<HTMLDetailsElement>(null);
 
   const closeServicesMenu = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.currentTarget.closest("details")?.removeAttribute("open");
@@ -47,6 +50,10 @@ const Header = () => {
       document.body.style.overflow = "unset";
     };
   }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    servicesMenuRef.current?.removeAttribute("open");
+  }, [pathname]);
 
   return (
     // У хедера z-50
@@ -73,7 +80,7 @@ const Header = () => {
           >
             Главная
           </Link>
-          <details className="group relative">
+          <details ref={servicesMenuRef} className="group relative">
             <summary className="flex cursor-pointer list-none items-center gap-1 text-[--color-text-muted] transition-colors hover:text-[--color-text-light]">
               Услуги
               <ChevronDown
