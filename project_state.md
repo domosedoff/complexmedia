@@ -1,5 +1,14 @@
 # Project state
 
+## 2026-09-25 — Bing Webmaster и sitemap
+
+- Сайт `https://complexmedia.ru/` импортирован в Bing Webmaster через
+  авторизованный Google Search Console.
+- Bing автоматически принял `https://complexmedia.ru/sitemap.xml`: статус
+  `Success`, 23 обнаруженных URL, 0 ошибок и 0 предупреждений.
+- Раздел IndexNow открыт. Ключевой файл и отправка URL ещё не включались,
+  потому что для этого требуется production deploy; production не изменялся.
+
 ## 2026-09-24 — preview и исправление выпадающего меню
 
 - Локальный preview новых решений поднят на `127.0.0.1:3101`; обзор и шесть
