@@ -7,7 +7,9 @@
 - Bing автоматически принял `https://complexmedia.ru/sitemap.xml`: статус
   `Success`, 23 обнаруженных URL, 0 ошибок и 0 предупреждений.
 - Раздел IndexNow открыт. Ключевой файл и отправка URL ещё не включались,
-  потому что для этого требуется production deploy; production не изменялся.
+  потому что для этого требуется production deploy; локальный файл
+  `public/complexmedia-indexnow-20260925.txt` подготовлен, production не
+  изменялся.
 
 ## 2026-09-24 — preview и исправление выпадающего меню
 
