@@ -90,6 +90,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "ai-sales-automation",
       "corporate-knowledge-base",
       "executive-ai-assistant",
+      "crm-ai-agents",
       "voice-ai-consultant",
       "ai-implementation",
       "ai-support-agent",
