@@ -1,7 +1,6 @@
 // src/app/api/send-email/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { render } from "@react-email/components";
-import nodemailer from "nodemailer";
 import { createElement } from "react";
 import { z } from "zod";
 import ContactFormEmail from "@/emails/ContactFormEmail";
@@ -97,55 +96,47 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const isWindows = process.platform === "win32";
-    const transporter = nodemailer.createTransport({
-      sendmail: true,
-      path: isWindows
-        ? "C:\\Windows\\System32\\OpenSSH\\ssh.exe"
-        : "/usr/bin/ssh",
-      args: [
-        isWindows
-          ? "C:\\Users\\darvo\\.ssh\\complexmedia_forn_mail_vps_ed25519"
-          : "/home/ubuntu/.ssh/complexmedia_forn_mail_vps_ed25519",
-        "-o",
-        "BatchMode=yes",
-        "-o",
-        "ConnectTimeout=10",
-        "-o",
-        "IdentitiesOnly=yes",
-        "-o",
-        "StrictHostKeyChecking=yes",
-        "complexmedia_forn@46.23.98.66",
-        "/usr/sbin/sendmail",
-        "-i",
-        "-f",
-        "info@complexmedia.ru",
-      ],
+    const resendApiKey = process.env.RESEND_API_KEY;
+    if (!resendApiKey) throw new Error("RESEND_API_KEY is not configured");
+
+    const emailResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${resendApiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Complex Media <forms@notify.complexmedia.ru>",
+        to: ["domosedov@mail.ru"],
+        subject: `Новая заявка с сайта от ${name}`,
+        reply_to: z.string().email().safeParse(contactInfo).success
+          ? contactInfo
+          : undefined,
+        html: await render(
+          createElement(ContactFormEmail, {
+            name,
+            contactInfo,
+            company,
+            role,
+            service,
+            message,
+            utmSource: utm_source,
+            utmMedium: utm_medium,
+            utmCampaign: utm_campaign,
+            utmTerm: utm_term,
+            utmContent: utm_content,
+          }),
+        ),
+      }),
+      signal: AbortSignal.timeout(10_000),
     });
 
-    await transporter.sendMail({
-      from: "Complex Media <info@complexmedia.ru>",
-      to: "domosedov@mail.ru",
-      subject: `Новая заявка с сайта от ${name}`,
-      replyTo: z.string().email().safeParse(contactInfo).success
-        ? contactInfo
-        : undefined,
-      html: await render(
-        createElement(ContactFormEmail, {
-          name,
-          contactInfo,
-          company,
-          role,
-          service,
-          message,
-          utmSource: utm_source,
-          utmMedium: utm_medium,
-          utmCampaign: utm_campaign,
-          utmTerm: utm_term,
-          utmContent: utm_content,
-        }),
-      ),
-    });
+    if (!emailResponse.ok) {
+      console.error("Resend email request failed", {
+        status: emailResponse.status,
+      });
+      throw new Error(`Resend API returned ${emailResponse.status}`);
+    }
 
     return NextResponse.json({
       success: true,
