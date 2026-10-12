@@ -107,7 +107,7 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         from: "Complex Media <forms@notify.complexmedia.ru>",
-        to: ["domosedov@mail.ru"],
+        to: ["yuri.p@complexmedia.ru"],
         subject: `Новая заявка с сайта от ${name}`,
         reply_to: z.string().email().safeParse(contactInfo).success
           ? contactInfo
