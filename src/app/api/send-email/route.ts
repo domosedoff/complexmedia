@@ -40,7 +40,7 @@ const FormDataSchema = z.object({
   contactInfo: z
     .string()
     .trim()
-    .min(1, "Контактная информация обязательна")
+    .email("Укажите корректный Email")
     .max(200),
   company: z.string().trim().max(200).optional(),
   role: z.string().trim().max(120).optional(),

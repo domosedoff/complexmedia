@@ -345,8 +345,8 @@ export const DemoRequestForm = ({ telegramHref = platformTelegramHref }: DemoReq
           <input name="company" required maxLength={200} className="mt-2 w-full rounded-lg border border-white/15 bg-primary-dark px-4 py-3 text-text-light outline-none transition focus:border-[--color-accent-red]" />
         </label>
         <label className="text-sm text-text-muted">
-          Рабочая почта или Telegram <span className="text-[--color-accent-red]">*</span>
-          <input name="contactInfo" required maxLength={200} placeholder="name@company.ru или @username" className="mt-2 w-full rounded-lg border border-white/15 bg-primary-dark px-4 py-3 text-text-light outline-none transition focus:border-[--color-accent-red]" />
+          Рабочая почта <span className="text-[--color-accent-red]">*</span>
+          <input type="email" name="contactInfo" required maxLength={200} autoComplete="email" placeholder="name@company.ru" className="mt-2 w-full rounded-lg border border-white/15 bg-primary-dark px-4 py-3 text-text-light outline-none transition focus:border-[--color-accent-red]" />
         </label>
         <label className="text-sm text-text-muted">
           Должность или роль

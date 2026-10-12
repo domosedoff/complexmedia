@@ -58,7 +58,7 @@ export const ContactFormEmail: React.FC<Readonly<ContactFormEmailProps>> = ({
             <strong>Имя:</strong> {name}
           </Text>
           <Text style={paragraph}>
-            <strong>Контакт (Email/Telegram):</strong> {contactInfo}
+            <strong>Email:</strong> {contactInfo}
           </Text>
           {company && (
             <Text style={paragraph}>

@@ -126,16 +126,17 @@ export const ContactFormFetch = () => {
             htmlFor="contactInfo"
             className="block text-sm font-medium text-text-muted mb-1"
           >
-            Email или Telegram{" "}
+            Email{" "}
             <span className="text-[--color-accent-red]">*</span>
           </label>
           <input
-            type="text"
+            type="email"
             id="contactInfo"
             name="contactInfo"
             required
+            autoComplete="email"
             className="w-full px-3 py-2 bg-primary-dark border border-white/20 rounded-md text-text-light placeholder-text-muted/50 focus:outline-none focus:border-[--color-accent-red] focus:ring-1 focus:ring-[--color-accent-red] transition"
-            placeholder="your@email.com или @your_telegram"
+            placeholder="your@email.com"
           />
         </div>
         <div>
